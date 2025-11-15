@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annapurna AI - Where Tradition Meets Innovation</title>
+  <link rel="icon" type="image/png" href="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Bootstrap -->
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel ="stylesheet" href = "style.css">
+  <style>
+    html, body { height: 100%; margin: 0; }
+
+    /* Navbar */
+    .navbar {
+      background-color: #198754 !important;
+      padding: 0.5rem 1rem; /* optional, for spacing */
+    }
+    .navbar .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin-left: 20px;
+    }
+
+    /* Brand (logo + text) */
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      color: white !important;
+      font-weight: 700;
+      gap: 10px; /* space between logo and text */
+      margin-right: -100px; /* remove extra margin */
+    }
+
+    /* Hero wrapper */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      text-align: left;
+      padding-left: 8%;
+    }
+
+    /* Slides */
+    .slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      will-change: opacity;
+    }
+    .slide.active { opacity: 1; }
+
+    /* Overlay */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+
+    /* Hero Content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 750px;
+    }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 700; }
+    .hero p  { font-size: clamp(1rem, 2.5vw, 1.2rem); margin-bottom: 1.25rem; line-height: 1.6; }
+
+    /* Typing effect */
+    .typing-text {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #f8f9fa;
+      margin-bottom: 15px;
+    }
+
+    /* Buttons */
+    .cta-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+    }
+    .cta-buttons .btn {
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+
+    /* Search Bar (TOP CENTER) */
+    .search-bar-top {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      width: 60%;
+      max-width: 600px;
+      display: flex;
+      background: rgba(255,255,255,0.1);
+      border-radius: 30px;
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+    }
+    .search-bar-top input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      background: transparent;
+      color: #fff;
+    }
+    .search-bar-top input::placeholder { color: #ddd; }
+    .search-bar-top button {
+      border: none;
+      background: #00ff99;
+      color: #000;
+      font-weight: 600;
+      padding: 12px 20px;
+      cursor: pointer;
+    }
+
+    /* Search Result */
+    #searchResult {
+      position: absolute;
+      top: 110px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      width: 60%;
+      max-width: 600px;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      display: none;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+    .stat-box h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #00ff99;
+      margin: 0;
+    }
+    .stat-box p {
+      font-size: 0.95rem;
+      color: #f1f1f1;
+      margin: 5px 0 0;
+    }
+
+    /* Ticker */
+    .ticker {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      color: #00ff99;
+      font-weight: 500;
+      padding: 8px 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .ticker span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 18s linear infinite;
+    }
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between logo and text */
+}
+
+/* Logo image */
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+/* Optional: adjust text */
+.logo-text {
+  font-size: 1.25rem;
+  white-space: nowrap; /* prevent wrapping */
+}
+/* Accordion Customization */
+  .accordion-button {
+    background-color: #f8f9fa; /* light background */
+    color: #198754; /* Bootstrap green */
+    font-weight: 500;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: #198754 !important; /* green */
+    color: white !important; /* white text */
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+  }
+
+  .accordion-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(25,135,84,.25); /* green glow */
+  }
+
+  .phone-frame {
+  max-width: 300px;
+  margin: auto;
+  /* border: 16px solid White; */
+  border-radius: 36px;
+  padding: 10px;
+  /* background: white; */
+  position: relative;
+}
+.phone-frame::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  border-radius: 10px;
+}
+
+
+/* Features Section */
+    .features {
+      background: #f8f9fa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .features h2 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .features p.subheading {
+      color: #666;
+      margin-bottom: 40px;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    .feature-card:hover { transform: translateY(-8px); }
+    .feature-icon {
+      font-size: 28px;
+      background: #ffc107;
+      color: #000;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+    }
+    .feature-card h5 {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      color: #444;
+      font-size: 0.9rem;
+    }
+
+    /* Floating Language Button (Bottom Right) */
+    .lang-floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #198754;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+    .lang-floating-btn:hover {
+      background: #145c38;
+    }
+    
+    #trade-data {
+  background-color: #f9f9f9;
+}
+
+#trade-data h2 {
+  font-weight: 700;
+  color: #198754;
+}
+
+#trade-data table th, #trade-data table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#market img {
+  max-height: 400px; /* control size */
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+#market p {
+  color: #333;
+}
+
+#disease {
+  background: #f9f9f9; /* soft background */
+  border-radius: 20px;
+  padding: 60px 40px;
+}
+
+#disease h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #198754; /* your theme green */
+}
+
+#disease p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #333;
+}
+
+#disease .btn-success {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+#disease .btn-success:hover {
+  background: #146c43; /* darker green hover */
+}
+
+#disease img {
+  max-width: 60%;
+  /* width: 100%; */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+#disease img:hover {
+  transform: scale(1.05);
+}
+
+/* Set icon color and size */
+.dropdown-menu .bi {
+  color: #198754; /* default green */
+  font-size: 1.1rem;
+}
+
+/* Change color when hovering over the menu item */
+.dropdown-menu .dropdown-item:hover .bi {
+  color: #145c33; /* darker green on hover */
+}
+
+/* ===== Crop Cards Carousel ===== */
+.crop-section {
+  text-align: center;
+  padding: 40px 20px;
+  overflow: hidden; /* hide scrollbars */
+}
+
+.crops {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+  touch-action: pan-y; /* allow horizontal swipes */
+  transition: animation-play-state 0.3s ease; /* smooth pause/resume */
+}
+
+/* ✅ Pause animation only when hovering over cards (not empty space) */
+.crops:hover {
+  animation-play-state: paused;
+}
+
+.crop-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 150px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.crop-card:hover {
+  color: #008037;
+  box-shadow: #008037 0px 0px 10px;
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.crop-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.crop-card p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.flot {
+  color:#000;
+  text-decoration: none;
+}
+
+
+    /* Scrolling Ticker Animation */
+
+
+    @keyframes scroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+  <div class="container">
+    <!-- Logo + Brand -->
+    <a class="navbar-brand d-flex align-items-center fw-bold me-auto" href="#hero">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Logo" class="logo-img me-2">
+      <span class="logo-text">Annapurna AI</span>
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Links + Language Dropdown -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <!-- <li class="nav-item"><a class="nav-link" href="#recommendation">Crop Recommendation</a></li>
+        <li class="nav-item"><a class="nav-link" href="#market">Market</a></li> -->
+
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+            <li>
+              <a class="dropdown-item" href="#disease">
+                <i class="bi bi-image-fill me-2"></i>Image Disease Detection
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#recommendation">
+                <i class="bi bi-graph-up-arrow me-2"></i>Crop Recommendation
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#crop">
+                <!-- <i class="bi bi-seedling me-2"></i>crops -->
+                <i class="bi bi-tree"></i> Crops
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#soil-testing">
+                <i class="bi bi-water me-2"></i>Soil Testing
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#market">
+                <i class="bi bi-shop me-2"></i>Market
+              </a>
+            </li>
+            <!-- Add more services here with relevant icons -->
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('modern_page') }}">Modern Farming</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-success" href="/register">Register</a></li>
+        <li class="nav-item"></li><a class="btn btn-outline-success me-2" href="/login">Login</a></li>
+
+        <!-- Language Dropdown -->
+        <li class="nav-item ms-3">
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              Language 🌐
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="langDropdown">
+              <!-- Just placeholder items; Google Translate will replace them -->
+              <li><div id="google_translate_element" style="padding: 0 10px;"></div></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hidden Google Translate widget -->
+<div id="google_translate_element" style="display:none;"></div>
+
+  <!-- Hero Section -->
+  <section id = "hero" class="hero">
+    <!-- Background Slides -->
+    <div class="slides">
+      <div class="slide active" style="background-image: url('https://cdn.prod.website-files.com/66604a97df59732aab43fcc8/674882e6935eaaad6bdf3fb7_post-23.webp');"></div>
+      <div class="slide" style="background-image: url('https://www.worldbank.org/content/dam/photos/780x439/2021/mar-2/agricultor.jpg');"></div>
+      <div class="slide" style="background-image: url('https://gumlet.assettype.com/downtoearth%2F2025-01-31%2Fy5cs5kg7%2FAgriculture.jpg?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100');"></div>
+      <div class="slide" style="background-image: url('https://i.ibb.co/RTD6dzpt/IMG-20250914-194120.jpg');"></div>
+      <div class="slide" style="background-image: url('https://i.ibb.co/dNxFB0S/IMG-20250914-194208.jpg');"></div>
+      <div class="slide" style="background-image: url('https://i.ibb.co/39SGLdQF/IMG-20250914-194315.jpg');"></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Search bar (TOP CENTER) -->
+    <div class="search-bar-top">
+      <input id="searchInput" type="text" placeholder="Need help? Tap the Annapurna AI button below!">
+      <button onclick="searchQuery()">Search</button>
+    </div>
+
+    <!-- Search Result -->
+    <div id="searchResult"></div>
+
+    <!-- Content -->
+    <div class="hero-content">
+      <h1>Welcome to Annapurna AI</h1>
+      <div class="typing-text"><span id="typed"></span></div>
+      <p>
+        Discover a wealth of knowledge, updates, and captivating visuals in our 
+        <b>Annapurna AI</b> resource hub featuring blogs, news, and videos.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="cta-buttons">
+        <a href="#chatbot" class="btn btn-success">Ask Annapurna Ai</a>
+        <a href="#services" class="btn btn-outline-light">View Resources</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat-box">
+          <h3 class="counter" data-target="50000">0</h3>
+          <p>Farmers Impacted</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="counter" data-target="92">0</h3>
+          <p>AI Accuracy (%)</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="counter" data-target="20">0</h3>
+          <p>Regions Served</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="counter" data-target="500">0</h3>
+          <p>Advisors & Experts</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrolling Ticker -->
+    <div class="ticker">
+      <span>🚜 Govt Subsidy Updates | 🌦 Weather Alerts | 🌱 New AI Crop Recommendations | 📈 Market Price Trends</span>
+    </div>
+  </section>
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2 id="featuresTitle">Transforming Indian agricultural landscape.</h2>
+      <p class="subheading" id="featuresSub">Harnessing millions of farm level data points.</p>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">🌱</div>
+            <h5 id="f1Title">Boost Your Crop Yield</h5>
+            <p id="f1Desc">Boost your crop yield with our 150+ agronomy models: multiple crops in varied geographies.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h5 id="f2Title">Informed Crop Decisions</h5>
+            <p id="f2Desc">Informed crop decision with IoT device – real-time crop data for accurate advisory.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">🚜</div>
+            <h5 id="f3Title">Farm Management</h5>
+            <p id="f3Desc">Take farm management to the next level with comprehensive multi-platform service.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon">☁</div>
+            <h5 id="f4Title">Weather & AI Power</h5>
+            <p id="f4Desc">Unlock the power of remote weather data and artificial intelligence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Placeholder Sections -->
+<section id="about" class="p-5 text-center bg-light">
+  <div class="container">
+    <h2 class="mb-4">🌾 About Annapurna AI</h2>
+
+    <!-- Language Toggle -->
+    <button id="langToggle" class="btn btn-success mb-4">हिंदी में पढ़ें</button>
+
+    <div class="row align-items-center">
+      <!-- Text Column -->
+      <div class="col-lg-7">
+        <!-- English Content -->
+        <div id="about-en">
+          <p class="lead">
+            Annapurna AI is a smart agricultural assistant designed to empower farmers with 
+            data-driven decisions. Our platform provides <b>personalized crop recommendations</b>, 
+            <b>real-time weather updates</b>, and <b>market insights</b> to help farmers 
+            improve productivity and income.
+          </p>
+          <p>
+            Farmers often lack access to scientific soil data (NPK values) and market forecasts.  
+            Annapurna AI bridges this gap by using <b>AI + open data sources</b> (soil, weather, 
+            irrigation availability) to give reliable suggestions in a <b>simple, farmer-friendly interface</b>.  
+          </p>
+          <p>
+            Our mission is to make <b>farming smarter, sustainable, and profitable</b> while ensuring 
+            accessibility in <b>local languages</b> for every farmer in India.
+          </p>
+        </div>
+
+        <!-- Hindi Content (hidden by default) -->
+        <div id="about-hi" style="display:none;">
+          <p class="lead">
+            अन्नपूर्णा एआई एक स्मार्ट कृषि सहायक है जो किसानों को <b>बेहतर निर्णय लेने</b> में मदद करता है। 
+            यह प्लेटफ़ॉर्म <b>फसल की सिफारिशें</b>, <b>मौसम की ताज़ा जानकारी</b> और 
+            <b>बाज़ार की स्थिति</b> उपलब्ध कराता है, जिससे किसानों की उपज और आय बढ़ सके।
+          </p>
+          <p>
+            किसानों को अक्सर अपनी मिट्टी का वैज्ञानिक डेटा (NPK मान) और बाज़ार की जानकारी नहीं मिल पाती।  
+            अन्नपूर्णा एआई <b>कृत्रिम बुद्धिमत्ता और ओपन डेटा</b> का उपयोग करके किसानों को 
+            सरल और भरोसेमंद सुझाव प्रदान करता है।  
+          </p>
+          <p>
+            हमारा उद्देश्य है कि <b>खेती स्मार्ट, टिकाऊ और लाभदायक</b> बने और हर किसान को 
+            <b>उसकी स्थानीय भाषा</b> में सही जानकारी मिल सके।
+          </p>
+        </div>
+      </div>
+
+      <!-- Image Column -->
+      <div class="col-lg-5">
+        <img src="https://i.ibb.co/xqnnTwmM/undefined-A-modern-smartphone.png" 
+             alt="Annapurna AI App Screenshot" 
+             >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Crop Recommendation Section with Image -->
+<section id="recommendation" class="p-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Text Column (Left) -->
+      <div class="col-md-6">
+        <h2 class="mb-4">Smart Crop Recommendation</h2>
+        <p class="lead mb-4">
+          Provide details about your farm, and let <strong>Annapurna AI</strong> suggest the most suitable crop for you. 
+          Our AI considers factors such as your location, soil type, and irrigation availability to recommend crops 
+          that maximize yield and sustainability.
+        </p>
+          <a href="{{ url_for('smart_page') }}" class="btn btn-success btn-lg">
+            Explore Crop Recommendations
+          </a>
+
+      </div>
+
+      <!-- Image Column (Right) -->
+      <div class="col-md-6 text-center">
+        <img src="https://agtech.folio3.com/wp-content/uploads/2023/09/ai3.jpg" 
+             alt="Crop Recommendation Illustration" class="img-fluid rounded shadow">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- Result -->
+    <div id="recommendResult" class="alert alert-success mt-4" style="display: none;"></div>
+  </div>
+  </section>
+<!-- Market Access Section -->
+<section id="market" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5" style="color: #198754; font-weight: 700;">
+      Access to Profitable Markets
+    </h2>
+    <div class="row align-items-center">
+      
+      <!-- Image Column (Left) -->
+      <div class="col-lg-5 mb-4 mb-lg-0">
+        <img src="https://agrevolution.in/assets/images/farmer-solution/profitable-markets.webp" 
+             alt="Market Access" 
+             >
+      </div>
+      
+      <!-- Text Column (Right) -->
+      <div class="col-lg-7">
+        <p style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
+          Enables farmers to sell their produce directly to institutional buyers and improves their income.  
+          Access to Profitable Markets offers farmers the convenience to sell their harvest at the end of the cropping season at mandi rates, without the hassle of transportation and involvement of middlemen.
+        </p>
+                <!-- Redirect Button -->
+        <a href="https://enam.gov.in/web/dashboard/trade-data"
+           class="btn btn-success btn-lg mt-3">
+          Explore Market Data
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Crop Disease Detection Info Section -->
+<section id="disease" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5" style="color:#198754;font-weight:700;">🌾 Crop Disease Detection</h2>
+    
+    <div class="row align-items-center">
+      <!-- Text Column (Left) -->
+      <div class="col-lg-7">
+        <p style="font-size:1.1rem; line-height:1.8;">
+          Early detection of crop diseases is the key to protecting farmer income and 
+          ensuring better yields. Our <b>AI-powered Crop Disease Detection system</b> 
+          allows farmers to simply upload a photo of their plant leaves and instantly 
+          receive insights about potential diseases and their severity.
+        </p>
+        <p style="font-size:1.1rem; line-height:1.8;">
+          Instead of waiting for visible damage or depending only on traditional methods, 
+          farmers can now use modern technology to get <b>fast, reliable, and easy-to-understand results</b>. 
+          The system also provides <b>treatment suggestions and preventive measures</b> 
+          to stop the spread and protect healthy crops.
+        </p>
+        <p style="font-size:1.1rem; line-height:1.8;">
+          This feature empowers farmers to take timely action, reduce crop loss, 
+          and increase productivity with the help of digital innovation.
+        </p>
+        <a href="{{ url_for('disease_page') }}" class="btn btn-success btn-lg">
+            Try Crop Disease Detection</a>
+        <!-- <a href="/disease" class="btn btn-success">Try Crop Disease Detection</a> -->
+        
+
+      </div>
+
+      <!-- Image Column (Right) -->
+      <div class="col-lg-5 text-center">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ca/8d/c0/ca8dc0fd-64b7-ccb9-6ee3-7e13d1041817/18eda0a5-7517-4258-89e6-6d3b867bab15_image1.png/750x750bb.jpeg" 
+             alt="Disease Detection" 
+             class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Services Section -->
+  <section id="services" class="p-5 bg-light">
+    <h2 class="mb-4 text-center">Our Services</h2>
+  <div class="container">
+    <div class="row align-items-center">
+      
+            <!-- Left side: Services list -->
+      <div class="col-md-6">
+        <h2 class="mb-4 text-success fw-bold">🌾 Digital Solutions for Farmers</h2>
+        
+        <div class="accordion" id="servicesAccordion">
+          
+          <!-- Service 1: Soil Testing -->
+          <div class="accordion-item mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#service1" onclick="changePhoneScreen('soil')">
+                <img src="https://img.icons8.com/color/48/test-tube.png" class="me-2" style="width:28px;"> Soil Testing
+              </button>
+            </h2>
+            <div id="service1" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+              <div class="accordion-body">
+                Get your soil tested for NPK, pH, and micronutrients with expert recommendations.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2: Weather Alerts -->
+          <div class="accordion-item mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#service2" onclick="changePhoneScreen('weather')">
+                <img src="https://img.icons8.com/color/48/cloud.png" class="me-2" style="width:28px;"> Weather Alerts
+              </button>
+            </h2>
+            <div id="service2" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+              <div class="accordion-body">
+                Stay updated with real-time rainfall, temperature, and drought alerts for your area.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3: Crop Planner -->
+          <div class="accordion-item mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#service3" onclick="changePhoneScreen('crop')">
+                <img src="https://img.icons8.com/color/48/plant-under-sun.png" class="me-2" style="width:28px;"> Crop Planner
+              </button>
+            </h2>
+            <div id="service3" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+              <div class="accordion-body">
+                AI-powered crop planning with suggestions based on soil, weather, and irrigation availability.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 4: Irrigation Advisory -->
+          <div class="accordion-item mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#service4" onclick="changePhoneScreen('irrigation')">
+                <img src="https://img.icons8.com/color/48/watering-can.png" class="me-2" style="width:28px;"> Irrigation Advisory
+              </button>
+            </h2>
+            <div id="service4" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+              <div class="accordion-body">
+                Get customized irrigation schedules to save water and improve crop yield.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 5: Market Prices -->
+          <div class="accordion-item mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#service5" onclick="changePhoneScreen('market')">
+                <img src="https://img.icons8.com/color/48/cheap-2.png" class="me-2" style="width:28px;"> Market Prices
+              </button>
+            </h2>
+            <div id="service5" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+              <div class="accordion-body">
+                Live mandi prices and demand updates to help farmers sell at the best rate.
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 6: Disease Detection -->
+          <div class="accordion-item mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#service6" onclick="changePhoneScreen('disease')">
+                <img src="https://img.icons8.com/color/48/microscope.png" class="me-2" style="width:28px;"> Disease Detection
+              </button>
+            </h2>
+            <div id="service6" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+              <div class="accordion-body">
+                Upload a picture of your crop and get instant AI-powered disease detection.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right side: Dynamic Phone Mockup -->
+      <div class="col-md-6 text-center">
+        <div class="phone-frame">
+          <img id="phoneScreen" src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" 
+               alt="App Screen" class="img-fluid rounded shadow">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </section>
+<!-- Crop Section -->
+  <section class="crop-section" id="crop">
+    <h1>We help you grow.</h1>
+    <p class="intro">
+      Explore a variety of crops and their growing conditions, handpicked for farmers. 
+      Our recommendations are tailored to improve productivity, sustainability, 
+      and profitability in agriculture.
+    </p>
+    <div class="crops" id="cropSlider">
+      <div class="crop-card"><img src="https://www.kenshodaily.com/cdn/shop/products/Sapota_Chikoo.png?v=1672742874" alt="Sapota"><a  href="{{ url_for('sapota_page') }}" class="flot">Sapota</a></div>
+      <div class="crop-card"><img src="https://www.tastingtable.com/img/gallery/what-are-sesame-seeds-really/how-do-sesame-seeds-grow-1683473434.jpg" alt="Sesame"><a  href="{{ url_for('sesam_page') }}" class="flot">Sesame</a></div>
+      <div class="crop-card"><img src="https://www.ncdex.com/public/uploads/commodity/image/Soybean.jpg" alt="Soybean"><a  href="{{ url_for('soyabean_page') }}" class="flot">Soybean</a></div>
+      <div class="crop-card"><img src="https://www.collinsdictionary.com/images/thumb/strawberry_227472010_250.jpg" alt="Strawberry"><a href="{{ url_for('str_page') }}" class="flot">Strawberry</a></div>
+      <div class="crop-card"><img src="https://media.istockphoto.com/id/1307399952/photo/sugarcane-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=WrWOXLqhAkS3L5bU5RHjLC_qlr-nAZVpefEMA65Njvk=" alt="Sugarcane"><a  href="{{ url_for('sugercane_page') }}" class="flot">Sugarcane</a></div>
+      <div class="crop-card"><img src="https://aaranyafarms.com/wp-content/uploads/2022/11/Sweet_Ornage.png" alt="Sweet Orange"><a  href="{{ url_for('orange_page') }}" class="flot">Orange</a></div>
+      <div class="crop-card"><img src="https://cdn.dotpe.in/longtail/store-items/7447797/78so3Bzf.jpeg" alt="Tea"><a  href="{{ url_for('tea_page') }}" class="flot">Tea</a></div>
+      <div class="crop-card"><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg" alt="Tomato"><a  href="{{ url_for('tom_page') }}" class="flot">Tomato</a></div>
+      <div class="crop-card"><img src="https://5.imimg.com/data5/SELLER/Default/2025/3/495998843/WX/SQ/NL/66789684/fresh-organic-carrot.jpg" alt="Carrot"><a  href="{{ url_for('carrot_page') }}" class="flot">Carrot</a></div>
+      <div class="crop-card"><img src="https://m.media-amazon.com/images/I/91EdPVzD99L.jpg" alt="Cauliflower"><a  href="{{ url_for('cauli_page') }}" class="flot">Cauliflower</a></div>
+      <div class="crop-card"><img src="https://thewaywewere.in/cdn/shop/files/FreeRange-2024-10-28T125714.328.png?v=1730102157" alt="Spinach"><a href="{{ url_for('spinach_page') }}" class="flot">Spinach</a></div>
+      <div class="crop-card"><img src="https://4.imimg.com/data4/BH/GH/MY-23225626/fresh-apple-500x500.jpg" alt="Apple"><a  href="{{ url_for('apple_page') }}" class="flot">Apple</a></div>
+      <div class="crop-card"><img src="https://png.pngtree.com/png-clipart/20250107/original/pngtree-a-beautiful-mango-png-image_20038426.png" alt="Mango"><a  href="{{ url_for('mango_page') }}" class="flot">Mango</a></div>
+      <div class="crop-card"><img src="https://png.pngtree.com/png-clipart/20250419/original/pngtree-watermelon-png-image_20797634.png" alt="Watermelon"><a  href="{{ url_for('watermelon_page') }}" class="flot">Watermelon</a></div>
+      <div class="crop-card"><img src="https://m.media-amazon.com/images/I/41QKCkQ2A5L._UF894,1000_QL80_.jpg" alt="Potato"><a  href="{{ url_for('pot_page') }}" class="flot">Potato</a></div>
+    </div>
+
+  </section>
+
+  <section id="faq" class="p-5 text-light" style="background: linear-gradient(135deg, #1d976c, #93f9b9);">
+  <div class="container">
+    <h2 class="text-center bi bi-question-square-fill fw-bold mb-4"> Frequently Asked Questions</h2>
+    <p class="text-center lead mb-5">Find quick answers to the most common queries.</p>
+
+    <div class="accordion" id="faqAccordion">
+
+      <!-- Question 1 -->
+      <div class="accordion-item mb-3 shadow rounded-3 bg-white text-dark">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button text-dark" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="bi bi-info-circle-fill me-2"></i> What is this platform about?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" 
+             aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            This platform helps people in <strong>Jharkhand</strong> or in India with crop recommendations, 
+            market insights, and agricultural support services.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="accordion-item mb-3 shadow rounded-3 bg-white text-dark">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="bi bi-graph-up me-2"></i> How do I get crop recommendations?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" 
+             aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can go to the <strong>Crop Recommendation</strong> section, enter details like 
+            soil type, season, and location, and get AI-based suggestions.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="accordion-item mb-3 shadow rounded-3 bg-white text-dark">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <i class="bi bi-currency-dollar me-2"></i> Is the market data updated regularly?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" 
+             aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, the <strong>Market Prices</strong> are updated daily to help farmers 
+            get accurate and latest information.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="accordion-item mb-3 shadow rounded-3 bg-white text-dark">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <i class="bi bi-geo-alt-fill me-2"></i> Can I access this service outside Jharkhand?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" 
+             aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, of course! Our services are accessible across India, 
+            not just in <strong>Jharkhand</strong>.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center mt-5">
+      <h5 class="fw-bold">Still have questions?</h5>
+      <p class="mb-3">Our team is here to help you anytime.</p>
+      <a href="#contact" class="btn btn-outline-light px-4">
+        <i class="bi bi-envelope-fill me-2"></i> Contact Us
+      </a>
+    </div>
+<!-- Google Map Link -->
+<div class="mt-5">
+  <h4 class="text-center fw-bold mb-3">
+    <i class="bi bi-pin-map-fill me-2"></i>Find Us on Map
+  </h4>
+  <div class="text-center">
+    <a href="https://maps.app.goo.gl/4wzPeX63As7M6a29A" 
+       target="_blank" 
+       class="btn btn-outline-success px-4 py-3">
+      Open Map in Google Maps
+    </a>
+  </div>
+</div>
+</section>
+
+
+<section id="contact" class="p-5 text-center bg-light">
+  <div class="container">
+    <!-- <i class="bi bi-geo-alt-fill me-2"></i> Can I access this service outside Jharkhand? -->
+    <h2 class="mb-4 fw-bold bi bi-envelope-arrow-down"> Contact Us</h2>
+    
+    <p class="lead mb-5">We’d love to hear from our team.</p>
+    
+
+    <div class="row g-4">
+      <!-- Contact Info -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border border-secondary bg-white">
+          <div class="card-body">
+            <i class="bi bi-telephone-fill fs-1 text-primary"></i>
+            <h5 class="mt-3">Phone</h5>
+            <p class="mb-0"> 0651-2233549</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border border-secondary bg-white">
+          <div class="card-body">
+            <i class="bi bi-envelope-fill fs-1 text-success"></i>
+            <h5 class="mt-3">Email</h5>
+            <p class="mb-0">info@kccjharkhand.in</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border border-secondary bg-white">
+          <div class="card-body">
+            <i class="bi bi-geo-alt-fill fs-1 text-danger"></i>
+            <h5 class="mt-3">Address</h5>
+            <p class="mb-0">
+              Directorate of Agriculture, Department of Agriculture, Animal Husbandry & Co-operative, Govt. of Jharkhand. Krishi Bhawan, Kanke, Ranchi-834008, Jharkhand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="mt-5">
+      <form class="row g-3 justify-content-center">
+        <div class="col-md-5">
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="col-md-5">
+          <input type="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="col-md-10">
+          <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+        
+        <div class="col-md-10">
+          <button type="submit" class="btn btn-success px-4">Send Message</button>
+        </div>
+      </form>
+    </div>
+
+</section>
+
+<!-- CSS -->
+<style>
+  /* Make the map smaller and centered initially */
+  .map-container {
+    width: 60%;
+    height: 300px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .map-container iframe {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+
+  /* Expanded state */
+  .map-container.expanded {
+    width: 100% !important;
+    height: 450px !important;
+  }
+
+  /* Adjust card hover effect */
+  .card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
+</style>
+
+<!-- JS -->
+<script>
+  // Toggle map expand on click/tap
+  const mapContainer = document.getElementById('mapContainer');
+  mapContainer.addEventListener('click', function() {
+    this.classList.toggle('expanded');
+  });
+</script>
+
+
+  <!-- Floating Language Button -->
+  <!-- <button class="lang-floating-btn" onclick="toggleLanguage()">🌐 हिंदी / English</button> -->
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+<div id="google_translate_element"></div>
+<script>
+ function loadGoogleTranslate() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'hi,as,bn,gu,kn,ks,kok,ml,mr,ne,or,pa,sa,sd,ta,te,ur',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+
+    // Slideshow
+    const slides = document.querySelectorAll('.slide');
+    let i = 0;
+    setInterval(() => {
+      slides[i].classList.remove('active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('active');
+    }, 5000);
+
+    // Typing effect
+    new Typed("#typed", {
+      strings: [
+        "Empowering Farmers with AI",
+        "Smart Agriculture Solutions",
+        "Your Digital Farming Partner"
+      ],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 1500,
+      loop: true
+    });
+    // Disease Detection Form
+    document.getElementById("diseaseForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+
+      let res = await fetch("/detect_disease", {
+        method: "POST",
+        body: formData
+      });
+      let data = await res.json();
+
+      document.getElementById("diseaseResult").innerHTML = `
+        <h5>Detected Disease: ${data.disease}</h5>
+        <p>Confidence: ${data.confidence}</p>
+        <img src="${data.image_url}" alt="Uploaded Crop" class="img-fluid mt-2" style="max-height:300px;">
+      `;
+
+    });
+  // Counter animation
+  document.querySelectorAll(".counter").forEach(counter => {
+    const animate = () => {
+      const target = +counter.getAttribute("data-target");
+      const count = +counter.innerText;
+      const increment = target / 200;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(animate, 20);
+      } else {
+        counter.innerText = target.toLocaleString();
+      }
+    };
+    animate();
+  });
+
+    // Search -> Flask
+    async function searchQuery() {
+      const query = document.getElementById("searchInput").value;
+      if (!query) return;
+      const res = await fetch("/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query })
+      });
+      const data = await res.json();
+      const resultBox = document.getElementById("searchResult");
+      resultBox.innerHTML = `<b>AI Answer:</b> ${data.answer}`;
+      resultBox.style.display = "block";
+    }
+
+
+document.getElementById("cropForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = {
+      location: document.getElementById("location").value,
+      soil: document.getElementById("soil").value,
+      irrigation: document.getElementById("irrigation").value
+    };
+
+    const response = await fetch("/recommend", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    const box = document.getElementById("recommendResult");
+    box.style.display = "block";
+    box.innerHTML = result.recommendation;
+  });
+
+  const langToggle = document.getElementById("langToggle");
+  const aboutEn = document.getElementById("about-en");
+  const aboutHi = document.getElementById("about-hi");
+
+  langToggle.addEventListener("click", () => {
+    if (aboutEn.style.display === "none") {
+      aboutEn.style.display = "block";
+      aboutHi.style.display = "none";
+      langToggle.innerText = "हिंदी में पढ़ें";
+    } else {
+      aboutEn.style.display = "none";
+      aboutHi.style.display = "block";
+      langToggle.innerText = "Read in English";
+    }
+  });
+
+      // Example JS for handling navbar language switch
+    document.querySelector("select").addEventListener("change", function() {
+      alert("Language switched to: " + this.value);
+    });
+
+  function changePhoneScreen(service) {
+  const phoneScreen = document.getElementById("phoneScreen");
+  
+  switch(service) {
+    case "soil":
+      phoneScreen.src = "https://agrevolution.in/assets/images/farmer-solution/phone/soil-testing.webp"; 
+      break;
+    case "weather":
+      phoneScreen.src = "https://agrevolution.in/assets/images/farmer-solution/phone/weather-alerts.webp"; 
+      break;
+    case "crop":
+      phoneScreen.src = "https://agrevolution.in/assets/images/farmer-solution/phone/crop-planner.webp"; 
+      break;
+    case "irrigation":
+      phoneScreen.src = "https://i.ibb.co/VfctWtL/undefined-A-realistic-mobile-a.png"; 
+      break;
+    case "market":
+      phoneScreen.src = "https://agrevolution.in/assets/images/farmer-solution/phone/mandi-rate.webp"; 
+      break;
+    case "disease":
+      phoneScreen.src = "https://i.ibb.co/XxLYB8d5/undefined-A-realistic-mobile-a-1.png"; 
+      break;
+    default:
+      phoneScreen.src = "https://i.ibb.co/xqnnTwmM/undefined-A-modern-smartphone.png"; 
+  }
+}
+  </script>
+  <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+  <!-- Optional JavaScript -->
+  <script>
+    // Example JS for handling navbar language switch
+    document.querySelector("select").addEventListener("change", function() {
+      alert("Language switched to: " + this.value);
+    });
+
+    // Duplicate cards to make infinite loop smoother
+    const cropSlider = document.getElementById("cropSlider");
+    cropSlider.innerHTML += cropSlider.innerHTML;
+
+    // ===== Touch Swipe Support =====
+    let startX = 0;
+    let scrollX = 0;
+    let isDragging = false;
+
+    cropSlider.addEventListener("touchstart", (e) => {
+      cropSlider.style.animationPlayState = "paused"; // stop auto scroll
+      isDragging = true;
+      startX = e.touches[0].pageX;
+      scrollX = cropSlider.offsetLeft;
+    });
+
+    cropSlider.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      let moveX = e.touches[0].pageX - startX;
+      cropSlider.style.transform = `translateX(${moveX}px)`;
+    });
+
+    cropSlider.addEventListener("touchend", () => {
+      isDragging = false;
+      cropSlider.style.animationPlayState = "running"; // resume auto scroll
+      cropSlider.style.transform = ""; // reset inline transform
+    });
+  </script>
+  <!-- <button id="chatbaseBtn" 
+        style="position:fixed; bottom:20px; right:20px; background:#198754; color:white; border:none; padding:12px 20px; border-radius:100%; cursor:pointer; z-index:9999;">👨‍🌾
+</button> -->
+</body>
+</html>

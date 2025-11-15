@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinach - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Fixed Image Container */
+    .fixed-img-container {
+      position: fixed;
+      top: 80px; /* below navbar */
+      right: 20px;
+      width: 650px;
+      text-align: center;
+      z-index: 500;
+    }
+    .fixed-img-container img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .fixed-img-container h3 {
+      margin-top: 10px;
+      font-size: 28px;
+      color: #006400;
+      font-weight: bold;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 700px;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .content h2 {
+      color: #006400;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #f0fff4;
+      border-left: 6px solid #006400;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: #006400;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #004d00;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .fixed-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+     <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Fixed Spinach Image with Caption -->
+  <div class="fixed-img-container">
+    <img src="https://www.allthatgrows.in/cdn/shop/articles/Spinach_Grow_Guide_Image_1.jpg?v=1566456554" alt="Spinach Leaves">
+    <h3>Fresh Spinach Plant</h3>
+  </div>
+
+  <!-- Details Section -->
+  <section class="content">
+    <h1>Spinach Cultivation Guide</h1>
+    <p>
+      Spinach is a <strong>cool-season leafy vegetable</strong> that thrives in mild climates.  
+      Optimal temperatures are <strong>Daytime 15–20°C (59–68°F), Nighttime 8–15°C (46–59°F)</strong>.  
+      It can tolerate light frost but bolts quickly in hot weather.  
+      Spinach prefers <strong>well-draining loamy or sandy loam soil</strong> rich in organic matter, with a 
+      <strong>pH of 6.0–7.5</strong>.  
+      Regular watering is essential to keep the soil moist and ensure tender leaves, but waterlogging should be avoided.
+    </p>
+
+    <h2>Climate and Light</h2>
+    <div class="highlight">
+      <p><b>Temperature:</b> Ideal range is 15–20°C (59–68°F). Growth slows below 5°C (41°F) and plants bolt above 25°C (77°F).</p>
+      <p><b>Photoperiod (Daylight):</b> Spinach grows best with <b>6–8 hours of sunlight daily</b>, though it can tolerate partial shade.</p>
+      <p><b>Humidity:</b> Moderate humidity (50–60%) is ideal. Very high humidity may encourage downy mildew and leaf spot diseases.</p>
+    </div>
+
+    <h2>Soil Requirements</h2>
+    <div class="highlight">
+      <p>Spinach grows well in <b>loamy or sandy loam soils</b> that are fertile and well-drained.  
+      Maintain soil pH between <b>6.0 and 7.5</b>.  
+      Add compost or well-rotted manure before planting for better yields.  
+      Avoid heavy clay soils that retain too much moisture.</p>
+    </div>
+
+    <h2>Watering</h2>
+    <div class="highlight">
+      <p>Spinach requires <b>consistent and light watering</b> to keep the soil evenly moist.  
+      Water every 2–3 days in dry conditions to prevent leaves from becoming bitter.  
+      Overwatering should be avoided as it may cause root rot and fungal diseases.  
+      Drip irrigation or gentle sprinkling is recommended for leafy crops.</p>
+    </div>
+
+    <a href="{{ url_for('index_page') }}" class="btn-back">⬅ Back to Home</a>
+  </section>
+  <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+
+</body>
+</html>

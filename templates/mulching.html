@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mulching - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+ /* Title Image Container */
+    .img-container {
+      max-width: 100%;
+      float:right;
+      margin-left:20px;
+    }
+    .img-container img {
+      max-width: 100%;
+      object-fit:cover;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    /* Content Section */
+    .content {
+      max-width: 100%;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow:auto;
+    }
+    .content h2 {
+      color: #008037;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #f0fff4;
+      border-left: 6px solid #008037;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+      max-width:100%;
+    }
+     /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      margin-left:40px;
+      margin-bottom:30px;
+      padding: 10px 18px;
+      background: #008037;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #00662c;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .img-container, .content-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+  </head>
+  <body>
+        <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li><a href="{{ url_for('index_page') }}">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#crop">Crop Recommendation</a></li>
+      <li><a href="#market">Market</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!--Title head-->
+  <section class="content">
+  <!-- Plastic Mulching Image -->
+  <h2>Mulching</h2>
+        <div class="img-container">
+            <img src="https://media.istockphoto.com/id/1427610220/photo/growing-plants-in-the-plantation-fields-by-mulching.jpg?s=612x612&w=0&k=20&c=0Ayf0wsOMl9UdxdCRomukQEj46lpf7LWAV0a_hQkzJI=" alt="Plastic Mulching">
+        </div>
+        <p>
+          Mulching is the practice of covering the soil surface around crops with organic or synthetic materials. It helps protect the soil, conserve moisture, and improve crop growth.<br>
+          <h4>Types of Mulch</h4>
+          <ul>
+            <li><strong>Organic mulch</strong> – crop residues, straw, dry leaves, compost, sugarcane trash, sawdust.</li>
+            <li><strong>Inorganic mulch</strong> – plastic sheets (black, silver, biodegradable films), gravel, stones.</li>
+          </ul>
+          </p>
+          <p>Mulching is especially beneficial for <strong>vegetables, orchards, and plantation crops</strong>. Many farmers in India are now using <strong>plastic mulching along with drip irrigation</strong> for higher productivity.</p>
+          <p>
+            <ul>
+              <li>Covering soil with straw, leaves, or plastic sheets.</li>
+              <li>Reduces evaporation, keeps soil moist, controls weeds.</li>
+              <li>Low-cost if natural mulch is used.</li>
+            </ul>
+        </section>
+        <section class="content">
+            <h2>Why Use It?</h2>
+        <div class="highlight">
+              <ul>
+                <li><strong>Moisture Conservation:</strong> Reduces evaporation, keeping soil moist longer.</li>
+                <li><strong>Weed Suppression:</strong> Limits weed growth by blocking sunlight.</li>
+                <li><strong>Soil Temperature Regulation:</strong> Keeps soil cooler in summer and warmer in winter.</li>
+                <li><strong>Soil Health:</strong> Organic mulches decompose over time, adding nutrients to soil.</li>
+                <li><strong>Erosion Control:</strong> Protects soil from heavy rain and wind.</li>
+                <li><strong>Enhanced Crop Yield:</strong> Creates better growing conditions, improving productivity.</li>
+            </ul>
+        </div> 
+        <h2>Site & Crop Information</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Vegetables:</strong> Use straw, grass, or plastic mulch on raised beds for tomatoes, chilies, cucumbers, etc.</li>
+                <li><strong>Orchards & Fruit Trees:</strong> Apply organic mulch (leaves, compost) around tree basins to conserve moisture.</li>
+                <li><strong>Field Crops:</strong> Wheat, maize, or sugarcane can benefit from straw or crop residue mulch.</li>
+                <li><strong>Flowers & Ornamentals:</strong> Use bark, wood chips, or plastic sheets to improve aesthetics and soil health.</li>
+                <li><strong>Sloped Land:</strong> Mulch can reduce runoff and prevent soil erosion.</li>
+            </ul>
+        </div> 
+        <h2>Types of Mulching</h2>
+        <div class="highlight">
+            <h3>A. Organic Mulches (Biodegradable)</h3>
+                <ul>
+                    <li>Crop residues: wheat straw, rice husk, maize stalks</li>
+                    <li>Dry leaves, grass clippings</li>
+                    <li>Compost or farmyard manure</li>
+                    <li>Sugarcane trash, coconut husk, groundnut shells</li>
+                    <li><strong>Advantages:</strong> Improves soil fertility after decomposition</li>
+                    <li><strong>Disadvantages:</strong> Needs replenishment every season</li>
+                </ul>
+
+                <h3>B. Inorganic/Synthetic Mulches</h3>
+                <ul>
+                    <li>Plastic mulch (black, silver, white films): widely used in vegetables, fruits, flowers</li>
+                    <li>Gravel, stones: in dryland or orchard conditions</li>
+                    <li><strong>Advantages:</strong> Long-lasting, excellent weed control</li>
+                    <li><strong>Disadvantages:</strong> Disposal of plastics is a challenge</li>
+                </ul>
+        </div>
+        <h2>How to Apply Mulch</h2>
+        <div class="highlight">
+            <ol>
+                <li><strong>Prepare the field:</strong> Remove existing weeds and irrigate the soil.</li>
+                <li><strong>Spread mulch:</strong>
+                <ol>
+                    <li><strong>Organic mulch:</strong> 5–10 cm thick layer around the base of plants, leaving a small gap around the stem.</li>
+                    <li><strong>Plastic mulch:</strong> Lay sheets over beds, punch holes where seedlings will be planted.</li>
+                </ol>
+                <li><strong>Maintain:</strong> Replace decomposed organic mulch; for plastics, ensure edges are buried to prevent blowing away.</li>
+            </ol>
+        </div>
+
+        <h2>Maintenance</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Organic mulch:</strong> Replenish decomposed material every season to maintain thickness and effectiveness.</li>
+                <li><strong>Plastic mulch:</strong> Check edges and anchor points regularly to prevent it from blowing away.</li>
+                <li><strong>Weed control:</strong> Remove any weeds growing through the mulch.</li>
+                <li><strong>Moisture management:</strong> Ensure soil under mulch remains adequately moist; irrigate as needed.</li>
+                <li><strong>Pest monitoring:</strong> Keep an eye for pests hiding under organic mulch and take action if necessary.</li>
+            </ul>
+        </div> 
+        <h2>Precautions</h2>
+        <div class="highlight">
+                <ul>
+                    <li><strong>Stem contact:</strong> Avoid thick mulch touching plant stems to prevent rotting.</li>
+                    <li><strong>Pest monitoring:</strong> Some mulches can harbor termites, slugs, or rodents — check regularly.</li>
+                    <li><strong>Plastic mulch disposal:</strong> Ensure safe disposal after use to avoid soil pollution.</li>
+                </ul>
+        </div> 
+        <h2>Economics & Support</h2>   
+        <div class="highlight">
+            <ul>
+                <li><strong>Cost Savings:</strong> Reduces water usage, labor, and fertilizer costs (especially when using organic mulch).</li>
+                <li><strong>Yield Improvement:</strong> Better moisture retention and weed control can increase crop productivity.</li>
+                <li><strong>Subsidies & Assistance:</strong> Some state agriculture departments and programs may provide support for plastic mulch or organic inputs.</li>
+                <li><strong>Long-term Soil Health:</strong> Organic mulches improve soil fertility over time, reducing dependency on chemical fertilizers.</li>
+            </ul>
+        </div>                  
+        </section>
+         <section class="content">
+            <h2>Tip for Farmers</h2>
+            <p> <strong>Combine mulching with drip irrigation:</strong> Saves maximum water and boosts crop productivity.</p>
+        </section>
+        <a href="{{ url_for('modern_page') }}" class="btn-back">⬅ Go Back</a>  
+        <script src="script.js"></script>
+  </body>
+</html>

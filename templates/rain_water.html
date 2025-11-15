@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rain Water Harvesting - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+ /* Title Image Container */
+    .img-container {
+      max-width: 100%;
+      float:right;
+      margin-left:20px;
+    }
+    .img-container img {
+      max-width: 100%;
+      object-fit:cover;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    /* Content Section */
+    .content {
+      max-width: 100%;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow:auto;
+    }
+    .content h2 {
+      color: #008037;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #f0fff4;
+      border-left: 6px solid #008037;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+      max-width:100%;
+    }
+     /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      margin-left:40px;
+      margin-bottom:30px;
+      padding: 10px 18px;
+      background: #008037;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #00662c;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .img-container, .content-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+  </head>
+  <body>
+        <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li><a href="{{ url_for('index_page')}}">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#crop">Crop Recommendation</a></li>
+      <li><a href="#market">Market</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!--Title head-->
+  <section class="content">
+  <!-- rwh image -->
+    <h2>Rainwater Harvesting (Farm Ponds, Tanks)</h2>
+        <div class="img-container">
+            <img src="https://media.istockphoto.com/id/1352567553/vector/the-house-apply-hydrologic-system-harvesting-water-rain-in-a-tank-to-be-recycle-home-living.jpg?s=612x612&w=0&k=20&c=ASDlbwjY0z0a1uAggkC22nIrh0B9xFq9mEOBAh6aokk=" alt="Rainwater havesting">
+          </div>
+          <p>
+            <strong>Rainwater harvesting:</strong> Collecting and storing rainwater in ponds, tanks, or other structures so that farmers can use it later for irrigation, livestock, or household needs. Instead of rainwater running off the field, it is stored and reused.
+          </p>
+          <h4>Types of Rainwater Harvesting Structures</h4>
+          <p>
+            <ul>
+              <li><strong>Farm Ponds:</strong> Small dug-out structures lined with soil, plastic, or cement to store rainwater.</li>
+              <li><strong>Check Dams:</strong> Built across small streams to slow down and store water.</li>
+              <li><strong>Percolation Tanks:</strong> Allow water to seep and recharge groundwater.</li>
+              <li><strong>Roof-top Harvesting:</strong> Collecting rainwater from buildings into tanks.</li>
+              <li><strong>Recharge Pits/Trenches:</strong> Direct water into the ground to improve groundwater levels.</li>
+            </ul>
+          </p>
+        </section>
+        <section class="content">
+        <h2>What is Rainwater Harvesting?</h2>
+        <div class="highlight">
+            <p>The process of collecting and storing rainwater that falls on rooftops, fields, or open areas.</p>
+            <p><strong>Stored water</strong> can be used for irrigation, drinking (after treatment), and groundwater recharge.</p>
+            <p>It helps <strong>reduce dependence</strong> on borewells, canals, and tankers.</p>
+        </div> 
+        <h2>Methods of Rainwater Harvesting</h2>
+        <div class="highlight">            
+            <h3>A. Rooftop Rainwater Harvesting</h3>
+            <ul>
+                <li>Collect water from house, shed, or barn roofs.</li>
+                <li>Pass it through a filter (sand/charcoal/gravel).</li>
+                <li>Store in tanks, sumps, or recharge pits.</li>
+                <li><strong>Uses:</strong> household water, drip irrigation for gardens/vegetables.</li>
+            </ul>
+            
+            <h3>B. Surface Water Harvesting (Farm Level)</h3>
+            <ul>
+                <li><strong>Farm ponds:</strong> Small excavated tanks (lined if soil is sandy) to collect runoff.</li>
+                <li><strong>Check dams/anicuts:</strong> Small barriers across streams to slow runoff and recharge groundwater.</li>
+                <li><strong>Percolation tanks:</strong> Shallow, large structures to recharge groundwater.</li>
+                <li><strong>Contour bunds/trenches:</strong> On sloping land to reduce erosion and increase infiltration.</li>
+            </ul>
+            
+            <h3>C. Groundwater Recharge</h3>
+            <ul>
+                <li>Recharge pits, shafts, or borewell recharge systems.</li>
+                <li>Runoff water is filtered and led into underground layers, raising the water table.</li>
+            </ul>
+        </div> 
+        <h2>Design Considerations</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Rainfall:</strong> Consider annual average and peak intensity in your area.</li>
+                <li><strong>Catchment area size:</strong> Roof area, field size, or open ground available.</li>
+                <li><strong>Soil type:</strong>
+                <ul>
+                    <li><strong>Sandy:</strong> Good infiltration, but ponds need lining to avoid seepage loss.</li>
+                    <li><strong>Clay:</strong> Poor infiltration, suitable for storage ponds.</li>
+                </ul>
+                </li>
+                <li><strong>Water demand:</strong> Identify usage — crop irrigation, livestock, or domestic needs.</li>
+            </ul>
+        </div>
+        <h2>Benefits for Farmers</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Reduced irrigation cost:</strong> Less need for diesel or electric pumping.</li>
+                <li><strong>Improved groundwater:</strong> Helps borewells last longer by recharging aquifers.</li>
+                <li><strong>Dry season support:</strong> Water available during dry spells ensures stable yields.</li>
+                <li><strong>Soil protection:</strong> Prevents erosion and nutrient loss from fields.</li>
+                <li><strong>Low maintenance:</strong> Once constructed, requires little upkeep.</li>
+         </ul>
+        </div>
+        <h2>Government Support in India</h2>
+        <div class="highlight">
+            The Government of India and multiple states provide subsidies for farm ponds, check dams, and rooftop harvesting structures
+          <ul>
+            <li><strong><a href="https://pmksy.gov.in/">PMKSY</a> (Pradhan Mantri Krishi Sinchayee Yojana) and <a href="https://nrega.dord.gov.in/MGNREGA_new/Nrega_home.aspx">MGNREGA</a>:</strong> Farmers get support to build farm ponds, check dams, and water harvesting structures.</li>
+            <li><strong>State subsidies:</strong> Many states provide 50–80% subsidy on farm ponds and plastic lining to store more water.</li>
+          </ul>
+        </div> 
+        <h2>Farmer’s Quick Checklist</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Choose the right method:</strong> Pond, rooftop, or recharge based on land and water needs.</li>
+                <li><strong>Estimate storage capacity:</strong> Catchment area × Rainfall × Runoff factor.</li>
+                <li><strong>Filtration:</strong> Always provide filtration before storage/recharge.</li>
+                <li><strong>Maintain structures:</strong> Desilt tanks, repair bunds annually before monsoon.</li>
+                <li><strong>Combine with micro-irrigation:</strong> Use drip/sprinkler for maximum benefit.</li>
+            </ul>
+        </div> 
+        <h2>Maintenance</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Desilt tanks and ponds:</strong> Remove accumulated silt and debris before monsoon.</li>
+                <li><strong>Repair structures:</strong> Check bunds, check dams, and recharge pits for cracks or leaks.</li>
+                <li><strong>Clean filters:</strong> Ensure all filters are free of debris to maintain water flow.</li>
+                <li><strong>Inspect pipelines:</strong> Look for blockages or damage in conveyance systems.</li>
+                <li><strong>Vegetation management:</strong> Remove weeds and unwanted plants around water harvesting structures.</li>
+            </ul>
+        </div>    
+        <h2>Economics & Support</h2>
+        <div class="highlight">
+              <ul>
+                <li><strong>Cost Savings:</strong> Reduces irrigation costs by minimizing diesel/electric pumping.</li>
+                <li><strong>Subsidies & Financial Support:</strong> Government schemes like 
+                <a href="https://nrega.nic.in/" target="_blank">MGNREGA</a> and 
+                <a href="https://pmksy.gov.in/" target="_blank">PMKSY</a> provide funding for RWH structures.</li>
+                <li><strong>Increased Productivity:</strong> Availability of water during dry spells ensures stable crop yields.</li>
+                <li><strong>Long-term Benefits:</strong> Improved groundwater levels and reduced soil erosion.</li>
+                <li><strong>Low Maintenance:</strong> Once installed, RWH structures require minimal upkeep.</li>
+            </ul>
+        </div>                  
+        </section>
+        <a href="{{ url_for('modern_page') }}" class="btn-back">⬅ Go Back</a>  
+        <script src="script.js"></script>
+  </body>

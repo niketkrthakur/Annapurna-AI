@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vermicomposting - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+ /* Title Image Container */
+    .img-container {
+      max-width: 100%;
+      float:right;
+      margin-left:20px;
+    }
+    .img-container img {
+      max-width: 100%;
+      object-fit:cover;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    /* Content Section */
+    .content {
+      max-width: 100%;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow:auto;
+    }
+    .content h2 {
+      color: #008037;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #f0fff4;
+      border-left: 6px solid #008037;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+      max-width:100%;
+    }
+    /*for the vermi vs chemi table*/
+    .custom-table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: left;
+    }
+    .custom-table th, 
+    .custom-table td {
+        border: 1px solid #333;
+        padding: 8px;
+    }
+    .custom-table thead {
+        background-color: #f0fff4;
+    }
+    
+     /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      margin-bottom:30px;
+      margin-left:40px;
+      padding: 10px 18px;
+      background: #008037;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #00662c;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .img-container, .content-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+
+    }
+  </style>
+  </head>
+  <body>
+        <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li><a href="{{ url_for('index_page')}}">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#crop">Crop Recommendation</a></li>
+      <li><a href="#market">Market</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!--Title head-->
+  <section class="content">
+  <!-- Sprinkler Image with Caption -->
+  <h2>Vermicomposting</h2>
+        <div class="img-container">
+          <img src="https://media.istockphoto.com/id/637521024/photo/red-worm-eggs-in-compost.jpg?s=612x612&w=0&k=20&c=KcJNOilH2YyyE5Wn4QGpOXnby4YACwWf5oqmDyXx7is=" alt="Vermicomposting">
+        </div>
+        <p>Vermicomposting is the process of using earthworms (usually Eisenia fetida or red wigglers) to decompose organic waste like crop residues, cow dung, and kitchen waste into nutrient-rich compost. 
+          The final product, called vermicompost, is a dark, fine, soil-like material full of plant nutrients and beneficial microbes.</p>
+          <p>In India, many state agriculture/horticulture departments promote vermicomposting under organic farming schemes. Subsidies or free earthworms/tanks are sometimes given to farmers.</p>
+          <ul>
+            <li>Using earthworms to turn farm waste into high-quality compost.</li>
+            <li>Very cheap, improves soil structure & fertility.</li>
+            <li>Farmers can sell compost as an extra source of income.</li>
+          </ul>
+        </p>
+        </section>
+        <section class="content">
+        <h2>What is Vermicomposting?</h2>
+        <div class="highlight">
+            <p>A method of making organic manure using earthworms.</p>
+            <p>Earthworms eat crop residues, cow dung, and organic waste → they excrete it as <strong>vermicast</strong>, a nutrient-rich fertilizer.</p>
+            <p>Vermicompost improves soil fertility, water-holding capacity, and crop yield.</p>
+        </div>
+        <h2>Materials Needed</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Earthworms:</strong> Species like <em>Eisenia fetida</em> or local red worms.</li>
+                <li><strong>Organic waste:</strong> Cow dung, crop residues, vegetable waste, leaf litter.</li>
+                <li><strong>Moisture source:</strong> Water (preferably non-chlorinated).</li>
+                <li><strong>Shady place:</strong> Avoid direct sun and heavy rain.</li>
+                <li><strong>Tank/Pit/Bed:</strong> Brick tank, cement ring, or simple raised bed with shade.</li>
+            </ul>
+        </div>
+
+        <h2>Steps in Vermicomposting</h2>
+        <div class="highlight">
+                <h3>1. Prepare the Bed/Pit</h3>
+                <ul>
+                    <li><strong>Size:</strong> Common is 3 m × 1 m × 1 m (can vary).</li>
+                    <li><strong>Shade:</strong> Provide with coconut leaves, thatch, or net.</li>
+                    <li><strong>Drainage:</strong> Ensure proper drainage to avoid waterlogging.</li>
+                </ul>
+
+                <h3>2. Pre-treatment of Waste</h3>
+                <ul>
+                    <li>Mix cow dung with crop residues or organic waste.</li>
+                    <li>Keep the mixture in a heap for 15–20 days to partially decompose (reduces heat).</li>
+                </ul>
+
+                <h3>3. Fill the Bed</h3>
+                <ul>
+                    <li>Spread a layer of dried leaves or straw at the bottom.</li>
+                    <li>Add 10–15 cm layer of pre-decomposed waste.</li>
+                    <li>Release earthworms (about 1 kg worms per 100 kg waste).</li>
+                    <li>Cover with moist gunny bags, straw, or banana leaves.</li>
+                </ul>
+
+                <h3>4. Maintain the Bed</h3>
+                <ul>
+                    <li>Keep moisture at 60–70% (like a squeezed sponge).</li>
+                    <li>Sprinkle water regularly, but avoid flooding.</li>
+                    <li>Turn the material once every 15–20 days for aeration.</li>
+                </ul>
+
+                <h3>5. Harvesting</h3>
+                <ul>
+                    <li>Compost is ready in 45–60 days.</li>
+                    <li>It looks dark brown/black, granular, and odorless.</li>
+                    <li>Separate worms by keeping compost in heaps under sunlight — worms move down, compost can be collected from top.</li>
+                </ul>
+        </div>
+        <h2>Nutrient Value of Vermicompost</h2>
+        <div class="highlight">
+                <ul>
+                    <li><strong>Contains NPK:</strong> Nitrogen, Phosphorus, and Potassium in available form.</li>
+                    <li><strong>Micronutrients:</strong> Also rich in Calcium (Ca), Magnesium (Mg), Iron (Fe), and Zinc (Zn).</li>
+                    <li><strong>Soil Benefits:</strong> Improves soil microbial activity and structure.</li>
+                </ul>
+        </div>
+        <h2>Vermicompost vs Chemical Fertilizer</h2>
+        <div class="highlight">
+            <table class="custom-table">
+                <thead style="background-color:#f0fff4;">
+                <tr>
+                    <th>Aspect</th>
+                    <th>Vermicompost</th>
+                    <th>Chemical Fertilizer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Cost</strong></td>
+                    <td>Low cost, can be produced on-farm</td>
+                    <td>High recurring expense</td>
+                </tr>
+                <tr>
+                    <td><strong>Nutrients</strong></td>
+                    <td>Contains NPK + micronutrients (Ca, Mg, Fe, Zn)</td>
+                    <td>Mostly NPK only, limited micronutrients</td>
+                </tr>
+                <tr>
+                    <td><strong>Soil Health</strong></td>
+                    <td>Improves structure, microbial activity, water retention</td>
+                    <td>May cause soil degradation with long-term use</td>
+                </tr>
+                <tr>
+                    <td><strong>Environmental Impact</strong></td>
+                    <td>Eco-friendly, no pollution</td>
+                    <td>Leaching & pollution of soil/water</td>
+                </tr>
+                <tr>
+                    <td><strong>Crop Quality</strong></td>
+                    <td>Better taste, nutrition, and shelf life</td>
+                    <td>Higher yield but possible decline in quality</td>
+                </tr>
+                <tr>
+                    <td><strong>Availability</strong></td>
+                    <td>Locally available, but limited quantity</td>
+                    <td>Readily available in market</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>    
+        
+        <h2>Applications of Vermicompost</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Field Crops:</strong> Apply 2–3 tons per hectare along with reduced chemical fertilizer for cereals, pulses, and oilseeds.</li>
+                <li><strong>Vegetables:</strong> Use 1–2 kg per plant at sowing or transplanting; improves yield and taste.</li>
+                <li><strong>Fruit Trees:</strong> Apply 5–10 kg per tree, twice a year (before flowering and after fruiting).</li>
+                <li><strong>Pot & Garden Plants:</strong> Mix 200–500 g with potting soil or apply as top dressing.</li>
+                <li><strong>Nurseries:</strong> Excellent medium for raising seedlings; enhances root development.</li>
+            </ul>
+        </div> 
+
+        <h2>Advantages</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Low cost & eco-friendly:</strong> Acts as a natural manure without harming the environment.</li>
+                <li><strong>Soil health:</strong> Improves fertility, structure, and overall crop quality.</li>
+                <li><strong>Reduced chemical use:</strong> Cuts down fertilizer requirement by 25–50%.</li>
+                <li><strong>Additional income:</strong> Can be sold in the market at ₹5–10 per kg.</li>
+            </ul>
+        </div> 
+
+        <h2>Precautions</h2>
+        <div class="highlight">
+                <ul>
+                    <li><strong>No harmful waste:</strong> Do not use plastics, metals, or diseased plant material.</li>
+                    <li><strong>Avoid fresh dung:</strong> It generates heat and can kill worms — only use pre-decomposed material.</li>
+                    <li><strong>Protection:</strong> Safeguard the bed from ants, termites, rats, and birds.</li>
+                    <li><strong>Moisture control:</strong> Keep at 60–70% — not too dry, not waterlogged.</li>
+                </ul>
+        </div>                  
+        </section>
+        <a href="{{ url_for('modern_page') }}" class="btn-back">⬅ Go Back</a>
+        <script src="script.js"></script>  
+  </body>
+</html>

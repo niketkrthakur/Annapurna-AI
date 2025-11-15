@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tea - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #2e7d32;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #c8e6c9;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f1f8f4;
+      color: #333;
+    }
+
+    /* Fixed Image Container */
+    .fixed-img-container {
+      position: fixed;
+      top: 80px; /* below navbar */
+      right: 20px;
+      width: 600px;
+      text-align: center;
+      z-index: 500;
+    }
+    .fixed-img-container img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .fixed-img-container h3 {
+      margin-top: 10px;
+      font-size: 28px;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 700px;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .content h1 {
+      color: #1b5e20;
+    }
+    .content h2 {
+      color: #2e7d32;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #e8f5e9;
+      border-left: 6px solid #2e7d32;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: #2e7d32;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #1b5e20;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .fixed-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Fixed Tea Image with Caption -->
+  <div class="fixed-img-container">
+    <img src="https://m.media-amazon.com/images/I/71Pw4pgd69L._UF1000,1000_QL80_.jpg" alt="Tea Plantation">
+    <h3>Tea lant</h3>
+  </div>
+
+  <!-- Details Section -->
+  <section class="content">
+    <h1>Tea Cultivation Guide</h1>
+    <p>
+      Tea (<em>Camellia sinensis</em>) is one of the most important plantation crops grown mainly in hilly and high-rainfall regions.  
+      It requires a <b>humid tropical to subtropical climate, well-drained acidic soils, and frequent rainfall</b>.  
+      With proper management, tea bushes can remain productive for decades.
+    </p>
+
+    <h2>Climate Requirements</h2>
+    <div class="highlight">
+      <p><b>Temperature:</b> Optimal range is <b>18–30°C</b>. Growth slows below 13°C and suffers above 35°C.</p>
+      <p><b>Rainfall:</b> Requires <b>1500–2500 mm</b> of well-distributed annual rainfall.</p>
+      <p><b>Humidity:</b> High humidity (70–90%) is favorable for lush leaf growth.</p>
+      <p><b>Altitude:</b> Best grown at elevations <b>600–2000 meters</b> above sea level for high-quality tea.</p>
+    </div>
+
+    <h2>Soil Requirements</h2>
+    <div class="highlight">
+      <p>Tea prefers <b>deep, well-drained loamy soils</b> rich in organic matter.  
+      Soil should be <b>slightly acidic (pH 4.5–5.5)</b>.  
+      Avoid alkaline, waterlogged, or compacted soils.</p>
+    </div>
+
+    <h2>Watering</h2>
+    <div class="highlight">
+      <p>Tea requires <b>frequent and uniform soil moisture</b>.  
+      Supplemental irrigation during dry periods is essential, especially in plains.  
+      <b>Drip or sprinkler irrigation</b> helps maintain humidity and ensures uniform growth.</p>
+    </div>
+
+    <h2>Harvesting</h2>
+    <div class="highlight">
+      <p>Tea is harvested by plucking the <b>top two leaves and a bud</b>, usually every <b>7–15 days</b> depending on growth.  
+      Plucking continues throughout the growing season, yielding fresh shoots for processing into green, black, or oolong tea.</p>
+    </div>
+
+    <a href="{{ url_for('index_page') }}" class="btn-back">⬅ Back to Home</a>
+  </section>
+  <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+
+</body>
+</html>

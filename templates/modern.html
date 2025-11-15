@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Farming Techniques - Annapurna AI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Bootstrap -->
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Title Image Container */
+    .img-container {
+      max-width: 100%;
+      float:right;
+      margin-left:20px;
+      text-align: center;
+    }
+    .img-container img {
+      max-width: 100%;
+      object-fit:cover;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .img-container h3 {
+      margin-top: 10px;
+      font-size: 28px;
+      color: #008037;
+      font-weight: bold;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 100%;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .content h2 {
+      color: #008037;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    
+    .highlight {
+      background: #f0fff4;
+      border-left: 6px solid #008037;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+      max-width:100%;
+      position:relative;
+      overflow:auto;
+    }
+     /* content images*/
+    .content-img-container {
+      max-width: 100%;
+      float:right;
+      margin-left:20px;
+    }
+    .content-img-container img {
+      max-width: 100%;
+      height:auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: #008037;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #00662c;
+    }
+
+     /* Floating Language Button (Bottom Right) */
+    .lang-floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #198754;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+    .lang-floating-btn:hover {
+      background: #145c38;
+    }
+
+    /* Target nav links */
+    .nav-link a {
+        color: white !important;   /* force white color */
+        font-weight: bold;         /* make text bold */
+        text-decoration: none;     /* remove underline if any */
+    }
+
+    /* Optional: add hover effect */
+    .nav-link a:hover {
+        color: #f0db4f;  /* yellow highlight on hover (you can change) */
+    }
+
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .img-container, .content-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+      <!-- Language Dropdown -->
+        <li class="nav-item ms-3">
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              Language 🌐
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="langDropdown">
+              <!-- Just placeholder items; Google Translate will replace them -->
+              <li><div id="google_translate_element" style="padding: 0 10px;"></div></li>
+            </ul>
+    </ul>
+  </nav>
+  <!--Title head-->
+  <section class="content">
+  <!-- Farming Image with Caption -->
+  <div class="img-container">
+    <img src="https://www.shutterstock.com/image-photo/drone-shot-tractor-spraying-lush-260nw-2464594961.jpg" alt="Modern Farming">
+    <h3>Modern Agricultural Practices</h3>
+  </div>
+    <h1>MODERN FARMING TECHNIQUES</h1>
+    <h2>Smart help for your farm.</h2>
+    <p>
+            Modern farming means using the right tools, methods, and information to grow more crops while saving water, protecting soil, and keeping farming sustainable for the future. It combines traditional knowledge with new practices like:
+            <ul>
+            <li>Soil health management – testing soil and adding the right nutrients.</li>
+            <li>Water-saving methods – drip irrigation, rainwater harvesting, and smart scheduling.</li>
+            <li>Pest and disease control – using safe techniques and timely alerts.</li>
+            <li>Weather-based planning – preparing for rain, heat, or storms with local forecasts.</li>
+            <li>Market awareness – knowing daily prices to sell crops at the best time.</li>
+            </ul>
+            Our goal is to make these practices easy and practical, so farmers can improve yields, earn more, and protect their land for the next generation.
+      </p>
+  </section>
+
+
+  <!-- Details Section -->
+  <section class="content">
+      <h2>Soil Testing - A Farmer's Guide</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+            <img src="https://media.istockphoto.com/id/1171878183/photo/laboratory-assistant-holding-glass-tubes-of-sand-black-soil-and-clay-befor-testing-them.jpg?s=612x612&w=0&k=20&c=GogZwXXUn0CPjrlcV7HqhhmZpoCSL-IU-nz4s4oQk8U=" alt="Soil Testing">
+          </div>
+          <p>Soil testing is the process of analyzing a soil sample to know its nutrient content, pH, organic matter, and other properties. It helps farmers understand what their soil needs before applying fertilizers or growing crops.</p>
+          <p>Micro irrigation is especially useful for vegetables, orchards, cash crops, and water-scarce regions. There are multiple subsidies by the Government to help farmers adopt it.</p>
+          <p>
+            <h4>Why Soil Testing is Important</h4>
+              <ul>
+                <li><strong>Right fertilizer use:</strong> Saves money by applying only what is needed.</li>
+                <li><strong>Higher yield:</strong> Balanced nutrients improve crop productivity.</li>
+                <li><strong>Soil health:</strong> Prevents overuse of chemicals and maintains fertility.</li>
+                <li><strong>Crop suitability:</strong> Helps choose the right crops for a particular soil.</li>
+                <li><strong>Government schemes:</strong> Required for availing some subsidies and benefits.</li>
+              </ul>
+            </p>
+            <p>You can get your soil tested by applying <a href="SoilTest.html">here</a>.<br>
+            Or, the Government of India also issues <a href="https://www.india.gov.in/spotlight/soil-health-card#tab=tab-1">Soil Health Cards</a> to farmers every 2 years showing nutrient status and fertilizer recommendations.</p>
+
+      </div>
+      <h2>Crop Rotation & Intercropping – Improved Traditional Practices for Farmers</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+            <img src="https://media.gettyimages.com/id/2214636297/photo/companion-planting-or-inter-cropping-at-organic-agricultural-field.jpg?s=612x612&w=0&k=20&c=NDsUQ7r-zpPfA-89Sr9v8SmWPb88dU2NxJqESjQFI6c=" alt="Intercropping">
+          </div>
+          <p>These are age-old farming methods that improve soil fertility, reduce risk, and increase income when used wisely.</p>
+
+          <h3>Crop Rotation</h3>
+          <p>
+           Growing different crops in the same field one after another instead of planting the same crop every season.
+          </p>
+
+          <p><strong>Example Rotations:</strong></p>
+          <ul>
+            <li><strong>Rice → Wheat → Pulses (Moong/Gram)</strong></li>
+            <li><strong>Cotton → Chickpea → Sorghum</strong></li>
+            <li><strong>Maize → Potato → Pea</strong></li>
+          </ul>
+
+          <h3>Intercropping</h3>
+          <p>
+           Growing two or more crops in the same field at the same time in a planned pattern (e.g., in alternate rows).
+          </p>
+
+          <p><strong>Examples of Good Intercrops:</strong></p>
+          <ul>
+            <li><strong>Maize + Cowpea</strong></li>
+            <li><strong>Sugarcane + Onion/Garlic</strong></li>
+            <li><strong>Cotton + Groundnut</strong></li>
+            <li><strong>Wheat + Mustard</strong></li>
+            <li><strong>Millets + Pulses</strong></li>
+          </ul>
+
+          <p>
+            These practices are highly recommended under <strong>National Mission on Sustainable Agriculture (NMSA)</strong> 
+            and <strong>Organic/Natural Farming initiatives in India</strong>. They are low-cost, eco-friendly, 
+            and very suitable for small farmers.
+          </p>
+
+          <p>
+            You can get more idea through your crop history and soil testing through our 
+            <strong><a href="croprecommendation.html">crop recommendation dashboard</a></strong>.
+          </p>
+        </div>
+
+      <h2>Micro Irrigation Techniques</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+            <img src="https://media.istockphoto.com/id/638155104/photo/water-sprinklers.jpg?s=612x612&w=0&k=20&c=uD2a0x8RWaDhPizGvvpNSzw5wi8zgAuArrxg166gXkQ=" alt="Sprinkler irrigation">
+          </div>
+          <p>Micro irrigation is a modern method of watering crops that delivers water directly to the root zone of plants in small, controlled amounts.
+          It includes techniques like <strong>drip irrigation</strong> (water drips slowly through pipes and emitters) and <strong>sprinkler/micro-sprinkler systems</strong> (water sprayed in fine droplets).</p>
+          <p>Micro irrigation is especially useful for vegetables, orchards, cash crops, and water-scarce regions. There are multiple subsidies by the Government to help farmers adopt it.</p>
+          <p>
+            <ul>
+              <li>Delivers water directly to plant roots (drip).</li>
+              <li><strong>Saves up to 60–70% </strong>of water compared to traditional methods.</li>
+              <li>Efficient in drought-prone areas.</li>
+            </ul>
+            <a href="{{ url_for('micro_irrigation_page') }}">Learn More</a>
+          </p>
+      </div>
+
+      <h2>Vermicomposting</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+          <img src="https://media.istockphoto.com/id/637521024/photo/red-worm-eggs-in-compost.jpg?s=612x612&w=0&k=20&c=KcJNOilH2YyyE5Wn4QGpOXnby4YACwWf5oqmDyXx7is=" alt="Vermicomposting">
+        </div>
+        <p>Vermicomposting is the process of using earthworms (usually Eisenia fetida or red wigglers) to decompose organic waste like crop residues, cow dung, and kitchen waste into nutrient-rich compost. 
+          The final product, called vermicompost, is a dark, fine, soil-like material full of plant nutrients and beneficial microbes.</p>
+          <p>In India, many state agriculture/horticulture departments promote vermicomposting under organic farming schemes. Subsidies or free earthworms/tanks are sometimes given to farmers.</p>
+          <ul>
+            <li>Using earthworms to turn farm waste into high-quality compost.</li>
+            <li>Very cheap, improves soil structure & fertility.</li>
+            <li>Farmers can sell compost as an extra source of income.</li>
+          </ul>
+          <a href="{{ url_for('vermi_page') }}">Learn More</a>
+      </div>
+
+      <h2>Rainwater Harvesting (Farm Ponds, Tanks)</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+            <img src="https://media.istockphoto.com/id/1352567553/vector/the-house-apply-hydrologic-system-harvesting-water-rain-in-a-tank-to-be-recycle-home-living.jpg?s=612x612&w=0&k=20&c=ASDlbwjY0z0a1uAggkC22nIrh0B9xFq9mEOBAh6aokk=" alt="Rainwater havesting">
+          </div>
+          <p>
+            <strong>Rainwater harvesting:</strong> Collecting and storing rainwater in ponds, tanks, or other structures so that farmers can use it later for irrigation, livestock, or household needs. Instead of rainwater running off the field, it is stored and reused.
+          </p>
+          <h4>Types of Rainwater Harvesting Structures</h4>
+          <p>
+            <ul>
+              <li><strong>Farm Ponds:</strong> Small dug-out structures lined with soil, plastic, or cement to store rainwater.</li>
+              <li><strong>Check Dams:</strong> Built across small streams to slow down and store water.</li>
+              <li><strong>Percolation Tanks:</strong> Allow water to seep and recharge groundwater.</li>
+              <li><strong>Roof-top Harvesting:</strong> Collecting rainwater from buildings into tanks.</li>
+              <li><strong>Recharge Pits/Trenches:</strong> Direct water into the ground to improve groundwater levels.</li>
+            </ul>
+
+          </p>
+          <h4>Government Support in India</h4>
+          <ul>
+            <li><strong><a href="https://pmksy.gov.in/">PMKSY</a> (Pradhan Mantri Krishi Sinchayee Yojana) and <a href="https://nrega.dord.gov.in/MGNREGA_new/Nrega_home.aspx">MGNREGA</a>:</strong> Farmers get support to build farm ponds, check dams, and water harvesting structures.</li>
+            <li><strong>State subsidies:</strong> Many states provide 50–80% subsidy on farm ponds and plastic lining to store more water.</li>
+          </ul>
+          <p><a href="{{url_for('rain_water_page') }}">Learn More</a></p>
+        </div>
+
+
+      <h2>Mulching</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+          <img src="https://media.istockphoto.com/id/1427610220/photo/growing-plants-in-the-plantation-fields-by-mulching.jpg?s=612x612&w=0&k=20&c=0Ayf0wsOMl9UdxdCRomukQEj46lpf7LWAV0a_hQkzJI=" alt="Plastic Mulching">
+        </div>
+        <p>
+          Mulching is the practice of covering the soil surface around crops with organic or synthetic materials. It helps protect the soil, conserve moisture, and improve crop growth.<br>
+          <h4>Types of Mulch</h4>
+          <ul>
+            <li><strong>Organic mulch</strong> – crop residues, straw, dry leaves, compost, sugarcane trash, sawdust.</li>
+            <li><strong>Inorganic mulch</strong> – plastic sheets (black, silver, biodegradable films), gravel, stones.</li>
+          </ul>
+          </p>
+          <p>Mulching is especially beneficial for <strong>vegetables, orchards, and plantation crops</strong>. Many farmers in India are now using <strong>plastic mulching along with drip irrigation</strong> for higher productivity.</p>
+          <p>
+            <ul>
+              <li>Covering soil with straw, leaves, or plastic sheets.</li>
+              <li>Reduces evaporation, keeps soil moist, controls weeds.</li>
+              <li>Low-cost if natural mulch is used.</li>
+            </ul>
+            <a href="{{ url_for('mulching_page') }}">Learn More</a>
+        </p>
+      </div>
+
+      <h2>AgroForestry (Trees+crops together)</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+          <img src="https://media.istockphoto.com/id/1280203624/photo/agroforestry.jpg?s=612x612&w=0&k=20&c=yOHed9ssGPObBvPP9Is7KuVU0_at5o5kT53cAdBbTPo=" alt="Agro-Forestry: poplar trees with wheat crop">
+        </div>
+        <p>
+          Agroforestry is a farming system where trees or shrubs are grown alongside crops and/or livestock on the same piece of land. Instead of keeping trees and crops separate, farmers integrate them to get multiple benefits.
+          <br><h4>Common Agroforestry Practices in India</h4>
+          <ul>
+            <li><strong>Alley cropping</strong>: Crops grown between rows of trees.</li>
+            <li><strong>Boundary planting</strong>: Trees planted on farm boundaries with crops inside.</li>
+            <li><strong>Silvipasture</strong>: Trees + grasses for fodder and livestock.</li>
+            <li><strong>Agri-horticulture</strong>: Fruit trees + seasonal crops.</li>
+          </ul>
+        </p>
+          <p>The Government of India supports agroforestry through the National Agroforestry Policy (2014) and schemes under National Mission for Sustainable Agriculture (NMSA) and State Horticulture Missions.
+             Farmers can get subsidies or free saplings for planting trees along with crops.</p>
+          <p>
+            <ul>
+              <li>Growing trees (like neem, bamboo, moringa) along with crops.</li>
+              <li>Provides shade, improves soil fertility, and gives extra income.</li>
+            </ul>
+            <a href="{{ url_for('agroforestry_page') }}">Learn More</a>
+
+        </p>
+      </div>
+    
+
+    <h2>Aquaponics</h2>
+    <div class="highlight">
+      <div class="content-img-container">
+          <img src="https://media.istockphoto.com/id/1398240797/vector/aquaponics-system-in-smart-farming-method-flow-of-water-and-nutritions-using-fish-in-diagram.jpg?s=612x612&w=0&k=20&c=5ypo90Y8NmySKfvs8gC_wvZXryycm5iiaSzlQzaGbgQ=" alt="Aquaponics">
+        </div>
+      <p>Aquaponics is a farming method that combines fish farming (aquaculture) with soilless plant production (hydroponics).
+        In this system, fish waste provides natural fertilizer for plants, while plants clean and filter the water for the fish. It creates a balanced cycle where both fish and crops grow together.</p>
+      <p>Aquaponics offers an efficient and sustainable way to produce food. It uses much less water than traditional agriculture, reduces the need for chemical fertilizers, and allows for year-round production in controlled environments.
+         With proper setup, a farmer can harvest both fresh vegetables and marketable fish from the same system, creating two sources of income from one farm.</p>
+      <p>
+        <ul>
+          <li>Integration of <strong>fish farming (aquaculture) with hydroponics</strong>.</li>
+          <li>Fish waste provides nutrients for plants, and plants purify water for fish.</li>
+          <li>Sustainable and <strong>resource-efficient</strong>.</li>
+
+        </ul>
+      </p>
+    </div>
+
+    <h2>Greenhouse Farming</h2>
+    <div class="highlight">
+      <div class="content-img-container">
+          <img src="https://media.istockphoto.com/id/1487096637/photo/a-young-african-woman-holds-a-laptop-while-he-checks-the-progress-of-the-growth-of-potted.jpg?s=612x612&w=0&k=20&c=2Eqdn56gJaXGdu5xq7xH_RR7x3baftN4hl1jFi4LJ9Y=" alt="Greenhouse Farming">
+        </div>
+      <p>Greenhouse farming is the practice of growing crops inside protected structures covered with transparent materials (like glass or plastic). 
+        This setup allows farmers to control temperature, humidity, light, and water, creating better growing conditions than in open fields.</p>
+        <p>Greenhouse farming is especially useful in areas with harsh climates, water scarcity, or high demand for off-season vegetables and flowers.</p>
+        <p>
+          <ul>
+            <li>Cultivation in <strong>climate-controlled</strong> houses.</li>
+            <li><strong>Protects plants</strong> from extreme weather.</li>
+            <li>Suitable <strong>for high-value crops</strong> like flowers, fruits, and vegetables.</li>
+          </ul>
+        </p>
+    </div>
+    
+      <h2>Vertical Farming</h2>
+      <div class="highlight">
+        <div class="content-img-container">
+          <img src="https://media.istockphoto.com/id/1447708621/photo/close-up-view-of-vertical-hydroponic-plant-system-with-cultivated-lettuces.jpg?s=612x612&w=0&k=20&c=ReDMLfgasWU8j-NrTyYlNqaOljsp-9AHseMSz5ZVxjQ=" alt="Vertical Farming">
+        </div>
+        <p>
+          Vertical farming is a modern agricultural technique where crops are grown in stacked layers (vertically) instead of traditional horizontal field.
+          It usually takes place in indoor, controlled environments like high-rise buildings, warehouses, or shipping containers.
+          </p>
+          <p>Vertical farming is a modern method of growing crops in vertically stacked layers instead of spreading them across wide fields. It often uses hydroponics (plants grown in water), aeroponics (plants grown in mist),
+             or aquaponics (plants with fish). These systems are usually housed in greenhouses or controlled indoor</p>
+          <p>
+            <ul>
+              <li><strong>Saves space</strong>, useful for cities with limited land.</li>
+              <li>Crops are grown in <strong>stacked layers</strong>, often indoors with artificial lighting.</li>
+              <li>Controlled environment ensures <strong>year-round production</strong></li>
+            </ul>
+        </p>
+      </div>
+
+
+    <a href="{{ url_for('index_page') }}" class="btn-back">⬅ Back to home</a>
+  </section>
+  <script src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+<div id="google_translate_element"></div>
+<script>
+ function loadGoogleTranslate() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'hi,as,bn,gu,kn,ks,kok,ml,mr,ne,or,pa,sa,sd,ta,te,ur',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>

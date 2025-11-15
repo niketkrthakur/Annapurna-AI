@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annapurna AI - Bazaar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      background-attachment: fixed;
+    }
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754 !important;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+    nav select {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+    h1 {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #008037;
+    }
+    .intro {
+      font-size: 28px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      color: #444;
+    }
+
+/* ===== Crop Cards Carousel ===== */
+.crop-section {
+  text-align: center;
+  padding: 40px 20px;
+  overflow: hidden; /* hide scrollbars */
+}
+
+.crops {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+  touch-action: pan-y; /* allow horizontal swipes */
+  transition: animation-play-state 0.3s ease; /* smooth pause/resume */
+}
+
+/* ✅ Pause animation only when hovering over cards (not empty space) */
+.crops:hover {
+  animation-play-state: paused;
+}
+
+.crop-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 150px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.crop-card:hover {
+  color: #008037;
+  box-shadow: #008037 0px 0px 10px;
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.crop-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.crop-card p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ===== Keyframes for scrolling ===== */
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* adjust depending on total width */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+        
+        <select>
+          <option>Language</option>
+          <option>English</option>
+          <option>Hindi</option>
+        </select>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Crop Section -->
+  <section class="crop-section" id="crop">
+    <h1>We help you grow.</h1>
+    <p class="intro">
+      Explore a variety of crops and their growing conditions, handpicked for farmers. 
+      Our recommendations are tailored to improve productivity, sustainability, 
+      and profitability in agriculture.
+    </p>
+    <div class="crops" id="cropSlider">
+      <div class="crop-card"><img src="https://www.kenshodaily.com/cdn/shop/products/Sapota_Chikoo.png?v=1672742874" alt="Sapota"><p>Sapota</p></div>
+      <div class="crop-card"><img src="https://www.tastingtable.com/img/gallery/what-are-sesame-seeds-really/how-do-sesame-seeds-grow-1683473434.jpg" alt="Sesame"><p>Sesame</p></div>
+      <div class="crop-card"><img src="https://www.ncdex.com/public/uploads/commodity/image/Soybean.jpg" alt="Soybean"><p>Soybean</p></div>
+      <div class="crop-card"><img src="https://www.collinsdictionary.com/images/thumb/strawberry_227472010_250.jpg" alt="Strawberry"><p>Strawberry</p></div>
+      <div class="crop-card"><img src="https://media.istockphoto.com/id/1307399952/photo/sugarcane-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=WrWOXLqhAkS3L5bU5RHjLC_qlr-nAZVpefEMA65Njvk=" alt="Sugarcane"><p>Sugarcane</p></div>
+      <div class="crop-card"><img src="https://aaranyafarms.com/wp-content/uploads/2022/11/Sweet_Ornage.png" alt="Sweet Orange"><p>Sweet Orange</p></div>
+      <div class="crop-card"><img src="https://cdn.dotpe.in/longtail/store-items/7447797/78so3Bzf.jpeg" alt="Tea"><p>Tea</p></div>
+    </div>
+  </section>
+
+  <!-- Optional JavaScript -->
+  <script>
+    // Example JS for handling navbar language switch
+    document.querySelector("select").addEventListener("change", function() {
+      alert("Language switched to: " + this.value);
+    });
+
+    // Duplicate cards to make infinite loop smoother
+    const cropSlider = document.getElementById("cropSlider");
+    cropSlider.innerHTML += cropSlider.innerHTML;
+
+    // ===== Touch Swipe Support =====
+    let startX = 0;
+    let scrollX = 0;
+    let isDragging = false;
+
+    cropSlider.addEventListener("touchstart", (e) => {
+      cropSlider.style.animationPlayState = "paused"; // stop auto scroll
+      isDragging = true;
+      startX = e.touches[0].pageX;
+      scrollX = cropSlider.offsetLeft;
+    });
+
+    cropSlider.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      let moveX = e.touches[0].pageX - startX;
+      cropSlider.style.transform = `translateX(${moveX}px)`;
+    });
+
+    cropSlider.addEventListener("touchend", () => {
+      isDragging = false;
+      cropSlider.style.animationPlayState = "running"; // resume auto scroll
+      cropSlider.style.transform = ""; // reset inline transform
+    });
+  </script>
+    <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+</body>
+</html>

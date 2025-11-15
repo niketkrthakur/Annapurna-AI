@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potato - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Fixed Image Container */
+    .fixed-img-container {
+      position: fixed;
+      top: 80px; /* below navbar */
+      right: 20px;
+      width: 650px;
+      text-align: center;
+      z-index: 500;
+    }
+    .fixed-img-container img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .fixed-img-container h3 {
+      margin-top: 10px;
+      font-size: 28px;
+      color: #008037;
+      font-weight: bold;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 700px;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .content h2 {
+      color: #008037;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #f0fff4;
+      border-left: 6px solid #008037;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: #008037;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #00662c;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .fixed-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Fixed Strawberry Image with Caption -->
+  <div class="fixed-img-container">
+    <img src="https://cdn.mos.cms.futurecdn.net/qJWpNh7ggfVDd722FX9nyV.jpg" alt="Potato Plants">
+    <h3>Fresh Potato Plants</h3>
+  </div>
+
+  <!-- Details Section -->
+  <section class="content">
+    <h1>Potato Cultivation Guide</h1>
+<p>
+  Potatoes grow best in a <strong>cool-temperate climate</strong> with temperatures 
+  between <strong>Daytime 18–22°C (65–72°F), Nighttime 12–18°C (54–65°F)</strong>.  
+  They need <strong>long days (12–14 hours)</strong> of daylight for tuber formation.  
+  Potatoes thrive in <strong>well-draining sandy loam or loam soil</strong> with a slightly acidic 
+  <strong>pH of 5.0–6.5</strong>, enriched with compost or well-rotted manure.  
+  Adequate and consistent moisture is crucial since potatoes have shallow roots, 
+  but <b>overwatering must be avoided</b> to prevent tuber rot.
+</p>
+
+<h2>Climate and Light</h2>
+<div class="highlight">
+  <p><b>Temperature:</b> Ideal range 18–22°C (65–72°F). Growth slows below 10°C (50°F) and above 30°C (86°F).</p>
+  <p><b>Photoperiod (Daylight):</b> Long-day crop; requires 12–14 hours of daylight for good tuberization.</p>
+  <p><b>Humidity:</b> Moderate humidity around 60–70% is best. High humidity may cause late blight and other fungal diseases.</p>
+</div>
+
+<h2>Soil Requirements</h2>
+<div class="highlight">
+  <p>Potatoes prefer <b>light, well-draining sandy loam or loam soil</b> with high organic matter.  
+  Maintain soil pH between <b>5.0 and 6.5</b>. Avoid heavy clay soil that retains too much water.  
+  Add compost or aged manure 2–3 weeks before planting for best results.</p>
+</div>
+
+<h2>Watering</h2>
+<div class="highlight">
+  <p>Potatoes require <b>consistent but moderate moisture</b>.  
+  They need about 25–50 mm of water per week depending on climate.  
+  Avoid waterlogging to prevent <b>tuber rot and fungal diseases</b>.  
+  Drip irrigation or furrow irrigation is recommended for uniform water distribution.</p>
+</div>
+
+
+    <a href="{{ url_for('index_page') }}" class="btn-back">⬅ Back to Home</a>
+  </section>
+  <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+
+</body>
+</html>

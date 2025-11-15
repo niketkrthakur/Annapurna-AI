@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FPO Crop Recommender</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("https://img.freepik.com/free-photo/close-up-green-leaves-blurred-leaf-background_1150-4721.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+      height: 100vh; /* full viewport height */
+      /* display: flex; */
+      color: white;
+      font-family: Arial, sans-serif;
+      /* justify-content: center; 
+      align-items: center;      */
+    }
+
+     /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .fixed-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    } 
+  </style>
+</head>
+<body class="container mt-5">
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <!-- <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li> -->
+    </ul>
+  </nav>
+  <h2>Enter Field Values for Crop Recommendation</h2>
+  <form method="POST" action="/fpo_recommend" class="mt-4">
+    <div class="row">
+      <div class="col-md-4 mb-3"><input type="number" step="0.1" name="N" placeholder="Nitrogen (N)" class="form-control" required></div>
+      <div class="col-md-4 mb-3"><input type="number" step="0.1" name="P" placeholder="Phosphorus (P)" class="form-control" required></div>
+      <div class="col-md-4 mb-3"><input type="number" step="0.1" name="K" placeholder="Potassium (K)" class="form-control" required></div>
+      <div class="col-md-4 mb-3"><input type="number" step="0.1" name="temperature" placeholder="Temperature (°C)" class="form-control" required></div>
+      <div class="col-md-4 mb-3"><input type="number" step="0.1" name="humidity" placeholder="Humidity (%)" class="form-control" required></div>
+      <div class="col-md-4 mb-3"><input type="number" step="0.1" name="ph" placeholder="Soil pH" class="form-control" required></div>
+      <div class="col-md-4 mb-3"><input type="number" step="0.1" name="rainfall" placeholder="Rainfall (mm)" class="form-control" required></div>
+    </div>
+    <button type="submit" class="btn btn-success">Get Recommendations</button>
+  </form>
+</body>
+</html>

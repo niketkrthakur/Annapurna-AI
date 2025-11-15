@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annapurna AI - Where Tradition Meets Innovation</title>
+  <link rel="icon" type="image/png" href="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f8f9fa;
+      background-image: url("https://img.freepik.com/premium-photo/green-forest-leaves-natural-light_961875-378841.jpg");
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Logo styling */
+.logo-img {
+  height: 40px; /* slightly bigger */
+  width: auto;
+  border-radius: 100%; /* rounded corners */
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1); /* subtle hover zoom */
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.logo-text:hover {
+  color: #198754; /* green accent on hover */
+}
+
+.custom-navbar {
+  background-color: #198754; /* dark green */
+}
+.custom-navbar .nav-link {
+  color: #fff; /* link color */
+}
+.custom-navbar .nav-link:hover {
+  color: #d1e7dd; /* lighter green on hover */
+}
+.custom-navbar .navbar-brand {
+  color: #fff;
+}
+.custom-navbar .navbar-brand:hover {
+  color: #d1e7dd;
+}
+
+
+
+    .hero-section {
+      background: linear-gradient(rgba(25, 135, 84, 0.85), rgba(25, 135, 84, 0.85)), 
+                  url("https://images.unsplash.com/photo-1598454442620-94f7d5edeb3a?auto=format&fit=crop&w=1350&q=80") 
+                  center/cover;
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+    }
+
+    .hero-section h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .upload-box {
+      border: 2px dashed #064728;
+      padding: 30px;
+      border-radius: 15px;
+      background: #fefefe;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .upload-box:hover {
+      background: #f1fdf5;
+    }
+
+    .preview-img {
+      max-width: 100%;
+      max-height: 250px;
+      border-radius: 15px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .btn-success {
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+    }
+
+    /* Spinner overlay */
+    .spinner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      z-index: 10;
+    }
+
+    .spinner-overlay p {
+      margin-top: 10px;
+      font-weight: 600;
+      color: #198754;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center fw-bold me-auto" href="index.html#hero">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Logo" class="logo-img me-2" height="35">
+      <span class="logo-text">Annapurna AI</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <!-- <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li> -->
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+        <li class="nav-item ms-3">
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              Language 🌐
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="langDropdown">
+              <li><div id="google_translate_element" style="padding: 0 10px;"></div></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero-section mt-5">
+  <h1>Crop Disease Detection</h1>
+  <p class="lead">Upload an image of your crop and let our AI analyze it for possible diseases.</p>
+</div>
+
+<!-- Upload Section -->
+<div class="container my-5">
+  <div class="card p-4 position-relative" id="uploadCard">
+    <h3 class="text-center mb-4 text-success">Upload Crop Image</h3>
+    <form id="diseaseForm" enctype="multipart/form-data">
+      <label for="cropImage" class="upload-box w-100 text-center">
+        <p class="mb-0"><strong>Click to Upload</strong> or drag & drop image here</p>
+        <input type="file" id="cropImage" name="crop_image" accept="image/*" class="d-none" required>
+      </label>
+
+      <img id="preview" class="preview-img" alt="Preview">
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-success">Detect Disease</button>
+      </div>
+    </form>
+
+    <div id="diseaseResult" class="mt-4 text-center"></div>
+  </div>
+</div>
+
+<!-- Google Translate -->
+<script src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+<script>
+  function loadGoogleTranslate() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'hi,as,bn,gu,kn,ks,kok,ml,mr,ne,or,pa,sa,sd,ta,te,ur',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+
+  // Preview selected image
+  const cropInput = document.getElementById('cropImage');
+  const preview = document.getElementById('preview');
+  cropInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.style.display = "block";
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Handle form submission (connects to Flask)
+  document.getElementById("diseaseForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const file = cropInput.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("crop_image", file);
+
+    // Create spinner overlay
+    const overlay = document.createElement("div");
+    overlay.className = "spinner-overlay";
+    overlay.id = "spinnerOverlay";
+    overlay.innerHTML = `
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Analyzing...</span>
+      </div>
+      <p>🔍 Analyzing crop image...</p>
+    `;
+
+    // Append overlay to card
+    document.getElementById("uploadCard").appendChild(overlay);
+
+    try {
+      const response = await fetch("/detect_disease", {
+        method: "POST",
+        body: formData
+      });
+      const result = await response.json();
+
+      // Remove overlay
+      overlay.remove();
+
+      document.getElementById("diseaseResult").innerHTML = `
+        <div class="alert alert-success">
+          ✅ <b>Disease:</b> ${result.disease} <br>
+          📊 <b>Confidence:</b> ${result.confidence} <br><br>
+          <img src="${result.image_url}" class="img-fluid rounded shadow mt-2" width="250">
+        </div>`;
+    } catch (error) {
+      overlay.remove();
+      document.getElementById("diseaseResult").innerHTML = 
+        `<div class="alert alert-danger">⚠️ Error analyzing image. Please try again.</div>`;
+    }
+  });
+</script>
+  <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Farmer Dashboard | Annapurna AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+  body {
+      background-image: url("https://images.pexels.com/photos/19821094/pexels-photo-19821094.jpeg?cs=srgb&dl=pexels-janinki-design-428112528-19821094.jpg&fm=jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+      height: 100vh;
+  }
+      /* Logo styling */
+.logo-img {
+  height: 40px; /* slightly bigger */
+  width: auto;
+  border-radius: 100%; /* rounded corners */
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1); /* subtle hover zoom */
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.logo-text:hover {
+  color: #198754; /* green accent on hover */
+}
+
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <!-- <a class="navbar-brand" href="#">Annapurna AI</a> -->
+       <a class="navbar-brand d-flex align-items-center fw-bold me-auto" href="index.html#hero">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Logo" class="logo-img me-2" height="35">
+      <span class="logo-text">Annapurna AI - Where Tradation Meets Innovation</span>
+    </a>
+      <a href="/logout" class="btn btn-outline-light">Logout</a>
+    </div>
+  </nav>
+  <div class="container mt-4">
+    <h2 class="mb-3">👨‍🌾 Farmer Dashboard</h2>
+    <div class="list-group">
+      <a href="/index" class="list-group-item list-group-item-action">Home</a>
+      <a href="/crop" class="list-group-item list-group-item-action">🌱 Crop Recommendation</a>
+      <a href="/disease" class="list-group-item list-group-item-action">🌾 Disease Detection</a>
+      <a href="/smart" class="list-group-item list-group-item-action">📊 Smart Farming Tools</a>
+    </div>
+  </div>
+</body>
+</html>

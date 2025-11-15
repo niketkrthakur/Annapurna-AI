@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sugarcane - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #2e7d32;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffd54f;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9fdf9;
+      color: #333;
+    }
+
+    /* Fixed Image Container */
+    .fixed-img-container {
+      position: fixed;
+      top: 80px; /* below navbar */
+      right: 20px;
+      width: 650px;
+      text-align: center;
+      z-index: 500;
+    }
+    .fixed-img-container img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .fixed-img-container h3 {
+      margin-top: 10px;
+      font-size: 28px;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 700px;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .content h1 {
+      color: #1b5e20;
+    }
+    .content h2 {
+      color: #2e7d32;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #f1fff0;
+      border-left: 6px solid #2e7d32;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: #2e7d32;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #1b5e20;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .fixed-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Fixed Sugarcane Image with Caption -->
+  <div class="fixed-img-container">
+    <img src="https://www.mahagro.com/cdn/shop/articles/iStock_000063947343_Medium_4e1c882b-faf0-4487-b45b-c2b557d32442.jpg?v=1541408129" alt="Sugarcane plant">
+    <h3>Sugarcane Plant</h3>
+  </div>
+
+  <!-- Details Section -->
+  <section class="content">
+    <h1>Sugarcane Cultivation Guide</h1>
+    <p>
+      Sugarcane is a <strong>tropical and subtropical crop</strong> mainly grown for sugar and jaggery production.  
+      It is a <b>long-duration crop</b> (10–18 months depending on region) and requires 
+      <strong>warm, humid climate and fertile soils</strong> for optimum yield.
+    </p>
+
+    <h2>Climate Requirements</h2>
+    <div class="highlight">
+      <p><b>Temperature:</b> Ideal range is <b>20–35°C</b>. Growth slows below 15°C and stops below 10°C.</p>
+      <p><b>Rainfall:</b> Requires about <b>100–150 cm</b> annual rainfall or irrigation. Even distribution is important.</p>
+      <p><b>Sunlight:</b> At least <b>7–8 hours daily</b> is needed for photosynthesis and sugar accumulation.</p>
+    </div>
+
+    <h2>Soil Requirements</h2>
+    <div class="highlight">
+      <p>Sugarcane thrives in <b>deep, fertile, well-drained loamy soils</b> rich in organic matter.  
+      Soil pH should be between <b>6.0 and 7.5</b>.  
+      Heavy clay or waterlogged soils reduce yield, while sandy soils require high irrigation and fertilizers.</p>
+    </div>
+
+    <h2>Watering</h2>
+    <div class="highlight">
+      <p>Sugarcane is a water-intensive crop requiring <b>1500–2500 mm of water</b> over the growing period.  
+      Irrigation frequency: every <b>7–10 days in summer</b> and <b>15–20 days in winter</b>.  
+      <b>Drip irrigation</b> improves water-use efficiency and sugar recovery.</p>
+    </div>
+
+    <h2>Harvesting</h2>
+    <div class="highlight">
+      <p>Harvesting is done when canes are <b>mature (10–18 months)</b>, with brix (sugar content) at its peak.  
+      Signs of maturity: <b>dried lower leaves, metallic sound when tapped, and maximum juice sweetness</b>.  
+      Harvesting at the right stage ensures higher sugar yield.</p>
+    </div>
+
+    <a href="{{ url_for('index_page') }}" class="btn-back">⬅ Back to Home</a>
+  </section>
+  <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+
+</body>
+</html>

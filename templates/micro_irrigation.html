@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micro Irrigation - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+ /* Title Image Container */
+    .img-container {
+      max-width: 100%;
+      float:right;
+      margin-left:20px;
+    }
+    .img-container img {
+      max-width: 100%;
+      object-fit:cover;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    /* Content Section */
+    .content {
+      max-width: 100%;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow:auto;
+    }
+    .content h2 {
+      color: #008037;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #f0fff4;
+      border-left: 6px solid #008037;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+      max-width:100%;
+    }
+     /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      margin-left:40px;
+      margin-bottom:30px;
+      padding: 10px 18px;
+      background: #008037;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #00662c;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .img-container, .content-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+  </head>
+  <body>
+        <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+     <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+    </ul>
+  </nav>
+  <!--Title head-->
+  <section class="content">
+  <!-- Sprinkler Image with Caption -->
+  <h2>Micro Irrigation Techniques</h2>
+        <div class="img-container">
+            <img src="https://media.istockphoto.com/id/638155104/photo/water-sprinklers.jpg?s=612x612&w=0&k=20&c=uD2a0x8RWaDhPizGvvpNSzw5wi8zgAuArrxg166gXkQ=" alt="Sprinkler irrigation">
+        </div>
+          <p>Micro irrigation is a modern method of watering crops that delivers water directly to the root zone of plants in small, controlled amounts.
+            It includes techniques like <strong>drip irrigation</strong> (water drips slowly through pipes and emitters) and <strong>sprinkler/micro-sprinkler systems</strong> (water sprayed in fine droplets).</p>
+          <p>Micro irrigation is especially useful for vegetables, orchards, cash crops, and water-scarce regions. There are multiple subsidies by the Government to help farmers adopt it.</p>
+          <p>
+            <ul>
+              <li>Delivers water directly to plant roots (drip).</li>
+              <li><strong>Saves up to 60–70% </strong>of water compared to traditional methods.</li>
+              <li>Efficient in drought-prone areas.</li>
+            </ul>
+        </p>
+        </section>
+        <section class="content">
+            <h2>Why Use It?</h2>
+        <div class="highlight">
+            <p>
+            Saves water, increases yield, reduces weed growth, supports fertigation, and works well in water-scarce areas.</p>
+        </div> 
+        <h2>Site & Crop Information</h2>
+        <div class="highlight">
+                <p><strong>Crop type & spacing:</strong></p>
+                <ul>
+                    <li><strong>Row crops:</strong> Cotton, maize, sugarcane → drip lines along each row.</li>
+                    <li><strong>Orchards:</strong> Mango, banana, citrus → drippers around the tree basin.</li>
+                    <li><strong>Vegetables:</strong> Tomato, chili, cucumber → 1 or 2 lateral lines per bed.</li>
+                    <li><strong>Flowers:</strong> Rose, marigold → closely spaced laterals.</li>
+                </ul>
+
+                <p><strong>Plant water requirement:</strong></p>
+                <ul>
+                    <li>Changes with growth stage. For example, tomato needs less water at seedling stage and much more at fruiting stage.</li>
+                    <li>Farmers can follow evapotranspiration (ET) charts from local agriculture departments to plan daily irrigation.</li>
+                </ul>
+
+                <p><strong>Soil type:</strong></p>
+                <ul>
+                    <li><strong>Sandy soil:</strong> Frequent irrigation in small doses (water drains quickly).</li>
+                    <li><strong>Clay soil:</strong> Apply slowly to avoid waterlogging.</li>
+                    <li><strong>Loam soil:</strong> Best for drip, moderate scheduling.</li>
+                </ul>
+
+                <p><strong>Field topography:</strong></p>
+                <ul>
+                    <li>Flat fields are easiest.</li>
+                    <li>Slopes require pressure regulators or terrace layout.</li>
+                </ul>
+
+                <p><strong>Water source & availability:</strong></p>
+                <ul>
+                    <li>Borewell, canal, reservoir, tank, pond.</li>
+                    <li>Continuous and reliable supply is important; backup source is useful in dry months.</li>
+                </ul>
+
+        </div> 
+        <h2>Water Quality</h2>
+        <div class="highlight">
+                <p><strong>Chemical quality:</strong></p>
+                <ul>
+                <li><strong>Salinity (EC):</strong> High salts affect crop growth.</li>
+                <li><strong>Hardness (Ca, Mg):</strong> Causes scaling in pipes.</li>
+                <li><strong>pH:</strong> Keep between 6.5–8.0.</li>
+                </ul>
+
+                <p><strong>Physical impurities:</strong></p>
+                <ul>
+                <li>Sand, silt, and algae clog filters and drippers.</li>
+                <li>Filtration is compulsory if water is not clear.</li>
+                </ul>
+
+                <p><strong>Biological issues:</strong></p>
+                <ul>
+                <li>Surface water may contain algae, bacteria, or organic matter.</li>
+                <li>Chlorination or periodic flushing is needed.</li>
+                </ul>
+
+                <p><strong>Remember:</strong> Poor water quality = clogged emitters → uneven irrigation → reduced yield.</p>
+
+        </div>
+        <h2>System Components</h2>
+        <div class="highlight">
+                <ul>
+                    <li><strong>Head unit:</strong>
+                    <ul>
+                        <li>Pump to lift water.</li>
+                        <li>Filters (sand, screen, or disc) to remove impurities.</li>
+                        <li>Fertilizer tank/venturi for applying fertilizer with irrigation (fertigation).</li>
+                    </ul>
+                    </li>
+                    <li><strong>Mainline & sub-main pipes:</strong> Carry water from head unit to laterals.</li>
+                    <li><strong>Laterals:</strong> Small pipes (12–20 mm) laid near crops.</li>
+                    <li><strong>Emitters/Drippers:</strong> Control the water flow (e.g., 2 L/hr).</li>
+                    <li><strong>Valves & regulators:</strong> For controlling flow, pressure, and section-wise irrigation.</li>
+                </ul>
+        </div>
+        <h2>Design Principles</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Operating pressure:</strong> Normally 0.7–2.5 bar (10–30 psi) for drip.</li>
+                <li><strong>Emitter spacing & discharge rate:</strong>
+                <ul>
+                    <li><strong>Vegetables:</strong> 30–40 cm spacing, 2 L/hr discharge.</li>
+                    <li><strong>Orchards:</strong> 4–8 L/hr emitters placed near tree basin.</li>
+                </ul>
+                </li>
+                <li><strong>Hydraulic design:</strong> Proper pipe sizing to ensure uniform flow across the field.</li>
+                <li><strong>Automation options:</strong> Timers, soil moisture sensors, and mobile-based control systems can save time and labor.</li>
+            </ul>
+        </div>
+        <h2>Installation & Operation</h2> 
+        <div class="highlight">
+            <ul>
+                <li><strong>Lay out pipes:</strong> As per crop geometry.</li>
+                <li><strong>Laterals:</strong> Fix on soil surface or slightly bury for protection.</li>
+                <li><strong>Flushing:</strong> Flush lines regularly to remove dirt.</li>
+                <li><strong>Irrigation scheduling:</strong>
+                <ul>
+                    <li><strong>Seedling:</strong> Short time, low water.</li>
+                    <li><strong>Flowering/Fruiting:</strong> Longer time, higher water.</li>
+                </ul>
+                </li>
+            </ul>
+        </div> 
+        <h2>Maintenance</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Filter & pipeline flushing:</strong> Flush weekly (or as per water quality).</li>
+                <li><strong>Treatments:</strong> Apply acid/chlorine if scaling or algae growth is seen.</li>
+                <li><strong>Emitters:</strong> Check for uniform discharge; replace clogged ones.</li>
+                <li><strong>Repairs & protection:</strong> Repair leaks quickly and protect laterals from rats or farm equipment damage.</li>
+            </ul>
+        </div> 
+        <h2>Economics & Support</h2>   
+        <div class="highlight">
+            <ul>
+                <li><strong>Cost–Benefit:</strong>
+                <ul>
+                    <li>Initial installation cost per hectare: approx. ₹40,000–₹70,000 (varies by crop and layout).</li>
+                    <li>Savings: 30–60% water, 20–40% fertilizer, 30–40% labor.</li>
+                    <li>Yield increase: 20–50% depending on crop.</li>
+                </ul>
+                </li>
+                <li><strong>Government Subsidies:</strong>
+                <ul>
+                    <li>In India, 45–70% subsidy is available under <a href="https://www.pmksy.gov.in/">PMKSY</a> and state schemes.</li>
+                    <li>Small/marginal farmers often get higher subsidy.</li>
+                </ul>
+                </li>
+                <li><strong>Long-term benefits:</strong>
+                <ul>
+                    <li>Better water-use efficiency.</li>
+                    <li>Higher yields and improved crop quality.</li>
+                    <li>Payback period usually 1.5–3 years.</li>
+                </ul>
+                </li>
+            </ul>
+        </div>                  
+        </section>
+        <a href="{{ url_for('modern_page') }}" class="btn-back">⬅ Go Back</a> 
+        <script src="script.js"></script> 
+  </body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annapurna AI - Market Prices</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+    /* Navbar */
+    nav {
+      background-color: #008037;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+    /* Page Container */
+    .container {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #008037;
+    }
+    .subtitle {
+      text-align: center;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    /* Filters */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 25px;
+      justify-content: center;
+    }
+    .filters select, .filters input, .filters button {
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .filters button {
+      background: #008037;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .filters button:hover {
+      background: #006b2c;
+    }
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #008037;
+      color: white;
+    }
+    tr:hover {
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Market</a></li>
+      <li><a href="#">Crops Recommendation</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li>
+            <select>
+            <option>EN</option>
+            <option>HI</option>
+            </select>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1>Market Prices</h1>
+    <p class="subtitle">Latest mandi trade details of <strong>Indian States</strong></p>
+
+    <!-- Filters -->
+    <div class="filters">
+      <select id="state">
+        <option value="">Select State</option>
+        <option>Madhya Pradesh</option>
+        <option>Uttar Pradesh</option>
+        <option>Jharkhand</option>
+        <option>Bihar</option>
+        <option>Odisha</option>
+        <option>West Bengal</option>
+        <option>Chhattisgarh</option>
+        <option>Rajasthan</option>
+        <option>Gujarat</option>
+        <option>Maharashtra</option>
+        <option>Karnataka</option>
+        <option>Tamil Nadu</option>
+        <option>Andhra Pradesh</option>
+        <option>Telangana</option>
+        <option>Punjab</option>
+        <option>Haryana</option>
+        <option>Uttarakhand</option>
+        <option>Himachal Pradesh</option>
+        <option>Jammu & Kashmir</option>
+        <option>Assam</option>
+        <option>Arunachal Pradesh</option>
+        <option>Nagaland</option>
+        <option>Manipur</option>
+        <option>Mizoram</option>
+        <option>Tripura</option>
+        <option>Meghalaya</option>
+        <option>Sikkim</option>
+        <option>Goa</option>
+        <option>Kerala</option>
+        <option>Chandigarh</option>
+        <option>Delhi</option>
+      </select>
+      <select id="apmc">
+        <option value="">Select APMC</option>
+        <option>BIAORA</option>
+        <option>KHARGONE</option>
+        <option>ASHOKNAGAR</option>
+      </select>
+      <select id="commodity">
+        <option value="">Select Commodity</option>
+        <option>Wheat</option>
+        <option>Maize</option>
+        <option>Soybeans</option>
+      </select>
+      <input type="date" id="fromDate" value="2025-09-11"/>
+      <input type="date" id="toDate" value="2025-09-11"/>
+      <button id="refreshBtn">Refresh</button>
+    </div>
+
+    <!-- Data Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>APMC</th>
+          <th>Commodity</th>
+          <th>Min Price</th>
+          <th>Modal Price</th>
+          <th>Max Price</th>
+          <th>Arrivals</th>
+          <th>Traded</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Rows will be inserted dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Sample data (later you can fetch from API or JSON file)
+    const mandiData = [
+      { state: "Madhya Pradesh", apmc: "BIAORA", commodity: "Wheat", min: 2400, modal: 2600, max: 2619, arrivals: 4442, traded: 4442, date: "2025-09-11" },
+      { state: "Madhya Pradesh", apmc: "KHARGONE", commodity: "Maize", min: 1300, modal: 1435, max: 1953, arrivals: 3312, traded: 4180, date: "2025-09-11" },
+      { state: "Madhya Pradesh", apmc: "ASHOKNAGAR", commodity: "Wheat", min: 2100, modal: 2100, max: 2100, arrivals: 3773, traded: 3773, date: "2025-09-11" },
+      { state: "Madhya Pradesh", apmc: "BERASIA", commodity: "Soybeans", min: 2450, modal: 4415, max: 4435, arrivals: 1374, traded: 1859, date: "2025-09-11" },
+      { state: "Uttar Pradesh", apmc: "KANPUR", commodity: "Wheat", min: 2200, modal: 2300, max: 2500, arrivals: 5000, traded: 4800, date: "2025-09-11" },
+      { state: "Uttar Pradesh", apmc: "LUCKNOW", commodity: "Maize", min: 1200, modal: 1350, max: 1800, arrivals: 4000, traded: 3900, date: "2025-09-11" },
+      { state: "Uttar Pradesh", apmc: "AGRA", commodity: "Soybeans", min: 2500, modal: 4500, max: 4600, arrivals: 1500, traded: 1600, date: "2025-09-11" },
+      {state: "Jharkhand", apmc: "RANCHI", commodity: "Rice", min: 3000, modal: 3200, max: 3500, arrivals: 2000, traded: 1900, date: "2025-09-11" },
+      {state: "Jharkhand", apmc: "JAMSHEDPUR", commodity: "Wheat", min: 2200, modal: 2400, max: 2600, arrivals: 2500, traded: 2400, date: "2025-09-11" },
+      {state: "Jharkhand", apmc: "Lohardaga", commodity: "Maize", min: 1300, modal: 1450, max: 1900, arrivals: 1800, traded: 1700, date: "2025-09-11" },
+      {state: "Jharkhand", apmc: "Dhanbad", commodity: "Soybeans", min: 2600, modal: 4600, max: 4700, arrivals: 1600, traded: 1500, date: "2025-09-11" },
+      {state: "Jharkhand", apmc: "Hazaribagh", commodity: "Pulses", min: 4000, modal: 4200, max: 4500, arrivals: 1200, traded: 1100, date: "2025-09-11" },
+      {state: "Jharkhand", apmc: "Bhounro", commodity: "Barley", min: 2000, modal: 2200, max: 2500, arrivals: 1400, traded: 1300, date: "2025-09-11" }
+    ];
+
+    const tableBody = document.getElementById("tableBody");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    function loadTable(data) {
+      tableBody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.state}</td>
+          <td>${row.apmc}</td>
+          <td>${row.commodity}</td>
+          <td>${row.min}</td>
+          <td>${row.modal}</td>
+          <td>${row.max}</td>
+          <td>${row.arrivals}</td>
+          <td>${row.traded}</td>
+          <td>${row.date}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    // Load initial table
+    loadTable(mandiData);
+
+    // Refresh button filter logic
+    refreshBtn.addEventListener("click", () => {
+      const state = document.getElementById("state").value;
+      const apmc = document.getElementById("apmc").value;
+      const commodity = document.getElementById("commodity").value;
+
+      const filtered = mandiData.filter(row => {
+        return (!state || row.state === state) &&
+               (!apmc || row.apmc === apmc) &&
+               (!commodity || row.commodity === commodity);
+      });
+
+      loadTable(filtered);
+    });
+  </script>
+</body>
+</html>

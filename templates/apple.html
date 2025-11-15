@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple - Annapurna AI</title>
+  <style>
+    /* ===== Navbar ===== */
+    nav {
+      background-color: #198754;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 100%;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeb3b;
+    }
+
+    /* ===== Page Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Fixed Image Container */
+    .fixed-img-container {
+      position: fixed;
+      top: 80px; /* below navbar */
+      right: 20px;
+      width: 650px;
+      text-align: center;
+      z-index: 500;
+    }
+    .fixed-img-container img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .fixed-img-container h3 {
+      margin-top: 10px;
+      font-size: 28px;
+      color: #b22222;
+      font-weight: bold;
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 700px;
+      margin: 40px 40px 40px 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .content h2 {
+      color: #b22222;
+      margin-top: 20px;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+
+    /* Highlight boxes */
+    .highlight {
+      background: #fff5f5;
+      border-left: 6px solid #b22222;
+      padding: 12px 16px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    /* Button */
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: #b22222;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #8b0000;
+    }
+
+    /* Responsive: Hide image on small screens */
+    @media (max-width: 900px) {
+      .fixed-img-container {
+        display: none;
+      }
+      .content {
+        max-width: 90%;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://i.ibb.co/xtWKLzZM/IMG-20250903-091125.png" alt="Annapurna AI Logo">
+      Annapurna AI
+    </div>
+    <ul>
+      <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Home</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">About</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Crop Recommendation</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Market</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Services</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">FAQ</a></li>
+        <li class="nav-link"><a class="nav-link" href="{{ url_for('index_page') }}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Fixed Apple Image with Caption -->
+  <div class="fixed-img-container">
+    <img src="https://lh6.googleusercontent.com/proxy/Z65sHSn6SNz9dD-j2JSPel6zcVIc5PcebIwG-GU5y-yaOTmLuBZ2jBxw5zRzT43oMQcSraw1RcicSbZ0hROweDECH1PhwjLuCOTWl8cb_JT_jvKuEetd1VrMT3dshSlmVtkO085vDSCB" alt="Apple Orchard">
+    <h3>Fresh Apple Orchards</h3>
+  </div>
+
+  <!-- Details Section -->
+  <section class="content">
+    <h1>Apple Cultivation Guide</h1>
+    <p>
+      Apple thrives in a <strong>temperate to subtropical climate</strong> with cold winters and moderate summers.  
+      Optimal temperatures are <strong>Daytime 21–27°C (70–81°F), Night time 6–15°C (43–59°F)</strong>.  
+      Chilling hours (below 7°C or 45°F) are required in winter for proper flowering and fruit set.  
+      Apples prefer <strong>well-draining loamy soil</strong> with a slightly acidic to neutral 
+      <strong>pH of 5.5–6.8</strong>.  
+      Regular irrigation is important during dry spells, though waterlogging must be avoided to protect roots.
+    </p>
+
+    <h2>Climate and Light</h2>
+    <div class="highlight">
+      <p><b>Temperature:</b> Ideal range 21–27°C (70–81°F). Requires 800–1,500 chilling hours below 7°C (45°F) depending on variety. High heat during flowering reduces fruit set.</p>
+      <p><b>Photoperiod (Daylight):</b> Requires <b>6–8 hours of full sunlight daily</b> for healthy growth and fruit color development.</p>
+      <p><b>Humidity:</b> Moderate humidity (50–70%) is best. Very high humidity can cause fungal diseases like apple scab and powdery mildew.</p>
+    </div>
+
+    <h2>Soil Requirements</h2>
+    <div class="highlight">
+      <p>Apples grow best in <b>deep, well-draining loamy soils</b> rich in organic matter.  
+      Maintain soil pH between <b>5.5 and 6.8</b>.  
+      Avoid heavy clay soils with poor aeration and drainage.  
+      Organic compost or farmyard manure should be added before planting for healthy establishment.</p>
+    </div>
+
+    <h2>Watering</h2>
+    <div class="highlight">
+      <p>Apple trees need <b>moderate but regular watering</b>, especially during fruit development.  
+      Young trees require watering every 7–10 days in dry conditions.  
+      Mature trees should be irrigated at critical stages: flowering, fruit set, and fruit enlargement.  
+      Overwatering and waterlogging must be avoided to prevent root diseases.  
+      Drip irrigation is highly recommended.</p>
+    </div>
+
+    <a href="{{ url_for('index_page') }}" class="btn-back">⬅ Back to Home</a>
+  </section>
+  <script>
+    // Optional: add HMAC identity verification for logged-in users
+    // window.chatbaseUser = { userId: "USER_ID_HERE", hmac: "HASH_FROM_SERVER" };
+
+    (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+            window.chatbase = (...args) => {
+                if(!window.chatbase.q) window.chatbase.q = [];
+                window.chatbase.q.push(args);
+            };
+            window.chatbase = new Proxy(window.chatbase, {
+                get(target, prop) {
+                    if(prop === "q") return target.q;
+                    return (...args) => target(prop, ...args);
+                }
+            });
+        }
+        const onLoad = function(){
+            const script = document.createElement("script");
+            script.src = "https://www.chatbase.co/embed.min.js";
+            script.id = "siAVqQTM2BUK_FgSfsyUo"; // Your unique Chatbase ID
+            script.domain = "www.chatbase.co";
+            document.body.appendChild(script);
+        };
+        if(document.readyState === "complete") {
+            onLoad();
+        } else {
+            window.addEventListener("load", onLoad);
+        }
+    })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recommended Crops</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+  <h2>✅ Recommended Crops</h2>
+  <ul class="list-group mt-3">
+    {% for crop in crops %}
+      <li class="list-group-item">{{ crop }}</li>
+    {% endfor %}
+  </ul>
+  <a href="/fpo_recommend" class="btn btn-primary mt-3">🔄 Try Again</a>
+</body>
+</html>
